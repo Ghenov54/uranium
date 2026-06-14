@@ -25,6 +25,8 @@
   --color-card-to: #2563eb;
 }
 
+/* Tailwind v4: @theme exposes these as utility classes (bg-accent, font-inter, max-w-container).
+   No tailwind.config.ts needed — v4 uses CSS-based configuration. */
 @theme {
   --color-accent: #d4ff37;
   --font-family-inter: var(--font-inter), sans-serif;
