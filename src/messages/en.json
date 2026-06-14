@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "cta": "Start a project"
+  },
+  "hero": {
+    "tagline": "EXTRAORDINARY",
+    "subtitle": "We create digital experiences that transform businesses.",
+    "cta": "Discover our services",
+    "scroll": "Scroll"
+  },
+  "intro": {
+    "heading1": "RESHAPING WHAT EXISTS, WE'RE",
+    "heading2": "HERE TO HELP YOU STAND OUT—",
+    "heading3": "WITH CLARITY, CREATIVITY, AND",
+    "heading4": "UNMATCHED PASSION.",
+    "card1Title": "AWARD WINNING",
+    "card1Desc": "Recognized globally for design excellence and innovation.",
+    "card2Title": "FAST DELIVERY",
+    "card2Desc": "Efficient workflows and dedicated teams for timely delivery.",
+    "card3Title": "GROWTH FOCUSED",
+    "card3Desc": "Strategic design that drives measurable results."
+  },
+  "services": {
+    "label": "What we do best",
+    "heading": "OUR SERVICES",
+    "web": "Web Development",
+    "webDesc": "High-performance websites, landing pages and e-commerce solutions.",
+    "apps": "Applications",
+    "appsDesc": "Web apps, mobile applications and custom software.",
+    "marketing": "Digital Marketing",
+    "marketingDesc": "SEO, social media, Google/Meta Ads and growth strategies.",
+    "business": "Business Solutions",
+    "businessDesc": "Consulting, automation, CRM and custom ERP solutions.",
+    "design": "Design & Branding",
+    "designDesc": "Visual identity, UI/UX design and complete branding."
+  },
+  "portfolio": {
+    "label": "Selected work",
+    "heading": "PORTFOLIO",
+    "seeAll": "See all projects"
+  },
+  "stats": {
+    "experience": "INDUSTRY EXPERIENCE",
+    "projects": "SUCCESSFULLY DELIVERED",
+    "clients": "GLOBAL PARTNERSHIPS",
+    "satisfaction": "CLIENT RETENTION RATE",
+    "years": "YEARS",
+    "projectsLabel": "PROJECTS",
+    "clientsLabel": "CLIENTS",
+    "satisfactionLabel": "SATISFACTION"
+  },
+  "about": {
+    "label": "About us",
+    "heading": "MAN BEHIND WORK",
+    "mission": "OUR MISSION",
+    "missionText": "Our mission is to empower brands through outstanding design that not only drives significant business results but also fosters enduring connections with their audiences.",
+    "delivery": "ON-TIME DELIVERY RATE",
+    "support": "SUPPORT",
+    "countries": "COUNTRIES",
+    "supportLabel": "24/7",
+    "countriesLabel": "15"
+  },
+  "testimonials": {
+    "label": "Testimonials",
+    "heading": "CLIENT STORIES"
+  },
+  "cta": {
+    "label": "Let's work together",
+    "heading": "READY TO CREATE SOMETHING EXTRAORDINARY",
+    "button": "Contact us"
+  },
+  "footer": {
+    "services": "SERVICES",
+    "company": "COMPANY",
+    "newsletter": "NEWSLETTER",
+    "newsletterDesc": "Get design insights and industry news delivered monthly.",
+    "emailPlaceholder": "Your email",
+    "copyright": "© 2026 Uranium. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "aboutUs": "About Us",
+    "ourWork": "Our Work",
+    "careers": "Careers",
+    "blogLink": "Blog",
+    "contactLink": "Contact"
+  }
+}

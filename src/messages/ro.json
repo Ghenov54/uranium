@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "services": "Servicii",
+    "portfolio": "Portofoliu",
+    "about": "Despre",
+    "blog": "Blog",
+    "pricing": "Prețuri",
+    "contact": "Contact",
+    "cta": "Începe un proiect"
+  },
+  "hero": {
+    "tagline": "EXTRAORDINARY",
+    "subtitle": "Creăm experiențe digitale care transformă afaceri.",
+    "cta": "Descoperă serviciile",
+    "scroll": "Scroll"
+  },
+  "intro": {
+    "heading1": "REDESCHIDEM CE EXISTĂ, SUNTEM",
+    "heading2": "AICI SĂ TE AJUTĂM SĂ IEȘI ÎN EVIDENȚĂ—",
+    "heading3": "CU CLARITATE, CREATIVITATE ȘI",
+    "heading4": "PASIUNE INCOMPARABILĂ.",
+    "card1Title": "AWARD WINNING",
+    "card1Desc": "Recunoscuți global pentru excelență în design și inovație.",
+    "card2Title": "FAST DELIVERY",
+    "card2Desc": "Fluxuri eficiente și echipe dedicate pentru livrare rapidă.",
+    "card3Title": "GROWTH FOCUSED",
+    "card3Desc": "Design strategic care generează rezultate măsurabile."
+  },
+  "services": {
+    "label": "Ce facem cel mai bine",
+    "heading": "SERVICIILE NOASTRE",
+    "web": "Dezvoltare Web",
+    "webDesc": "Site-uri de prezentare, landing page-uri și e-commerce de înaltă performanță.",
+    "apps": "Aplicații",
+    "appsDesc": "Web apps, aplicații mobile și software custom adaptat nevoilor tale.",
+    "marketing": "Marketing Digital",
+    "marketingDesc": "SEO, social media, Google/Meta Ads și strategii de creștere.",
+    "business": "Soluții Business",
+    "businessDesc": "Consultanță, automatizări, CRM și soluții ERP personalizate.",
+    "design": "Design & Branding",
+    "designDesc": "Identitate vizuală, UI/UX design și branding complet."
+  },
+  "portfolio": {
+    "label": "Lucrări selectate",
+    "heading": "PORTOFOLIU",
+    "seeAll": "Vezi toate proiectele"
+  },
+  "stats": {
+    "experience": "ANI EXPERIENȚĂ",
+    "projects": "PROIECTE LIVRATE",
+    "clients": "CLIENȚI GLOBALI",
+    "satisfaction": "SATISFACȚIE CLIENȚI",
+    "years": "ANI",
+    "projectsLabel": "PROIECTE",
+    "clientsLabel": "CLIENȚI",
+    "satisfactionLabel": "SATISFACȚIE"
+  },
+  "about": {
+    "label": "Despre noi",
+    "heading": "ECHIPA DIN SPATELE MUNCII",
+    "mission": "MISIUNEA NOASTRĂ",
+    "missionText": "Misiunea noastră este să împuternicim branduri prin design excepțional care nu doar generează rezultate de business, ci și construiește conexiuni durabile cu audiența lor.",
+    "delivery": "LIVRARE LA TIMP",
+    "support": "SUPORT",
+    "countries": "ȚĂRI",
+    "supportLabel": "24/7",
+    "countriesLabel": "15"
+  },
+  "testimonials": {
+    "label": "Testimoniale",
+    "heading": "POVEȘTILE CLIENȚILOR"
+  },
+  "cta": {
+    "label": "Hai să colaborăm",
+    "heading": "READY TO CREATE SOMETHING EXTRAORDINARY",
+    "button": "Contactează-ne"
+  },
+  "footer": {
+    "services": "SERVICII",
+    "company": "COMPANIE",
+    "newsletter": "NEWSLETTER",
+    "newsletterDesc": "Primește noutăți și resurse utile lunar.",
+    "emailPlaceholder": "Email-ul tău",
+    "copyright": "© 2026 Uranium. Toate drepturile rezervate.",
+    "privacy": "Politica de confidențialitate",
+    "terms": "Termeni și condiții",
+    "aboutUs": "Despre noi",
+    "ourWork": "Proiectele noastre",
+    "careers": "Cariere",
+    "blogLink": "Blog",
+    "contactLink": "Contact"
+  }
+}
