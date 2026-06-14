@@ -1,1 +1,19 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.section-container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--padding-x);
+}
