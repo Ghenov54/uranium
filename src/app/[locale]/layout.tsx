@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { Navbar } from "@/components/layout/Navbar";
 
 type Props = {
   children: ReactNode;
@@ -21,7 +22,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages} locale={locale as Locale}>
       <div lang={locale} className="contents">
-        {children}
+        <Navbar />
+        <main>{children}</main>
       </div>
     </NextIntlClientProvider>
   );
