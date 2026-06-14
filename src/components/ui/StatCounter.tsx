@@ -18,8 +18,11 @@ export function StatCounter({
   const [count, setCount] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    hasAnimated.current = false;
+
     const el = containerRef.current;
     if (!el) return;
 
@@ -39,11 +42,11 @@ export function StatCounter({
             setCount(Math.round(progress * target));
 
             if (t < 1) {
-              requestAnimationFrame(tick);
+              rafRef.current = requestAnimationFrame(tick);
             }
           };
 
-          requestAnimationFrame(tick);
+          rafRef.current = requestAnimationFrame(tick);
         }
       },
       { threshold: 0.3 }
@@ -53,6 +56,7 @@ export function StatCounter({
 
     return () => {
       observer.disconnect();
+      cancelAnimationFrame(rafRef.current);
     };
   }, [target, duration]);
 
