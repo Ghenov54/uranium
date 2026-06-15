@@ -67,7 +67,7 @@ const components = {
       </strong>
     ),
     em: ({ children }: { children?: React.ReactNode }) => (
-      <em className="italic">{children}</em>
+      <em className="italic" style={{ color: "var(--color-text-primary)" }}>{children}</em>
     ),
     code: ({ children }: { children?: React.ReactNode }) => (
       <code

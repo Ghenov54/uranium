@@ -90,7 +90,11 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
 
           {post.tags && post.tags.length > 0 && (
-            <div className="mb-4 flex flex-wrap gap-2">
+            <div className="mb-4">
+              <p className="mb-2 text-xs uppercase tracking-widest" style={{ color: "var(--color-text-muted)" }}>
+                {t("tags")}
+              </p>
+              <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
@@ -100,6 +104,7 @@ export default async function BlogPostPage({ params }: Props) {
                   {tag}
                 </span>
               ))}
+              </div>
             </div>
           )}
 
