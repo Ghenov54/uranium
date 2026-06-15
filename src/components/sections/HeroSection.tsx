@@ -81,7 +81,7 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
             {displaySubtitle}
           </p>
 
-          {/* CTAs */}
+          {/* CTA */}
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href={`/${locale}/contact`}
@@ -94,29 +94,6 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-            <Link
-              href={`/${locale}/portofoliu`}
-              className="inline-flex items-center gap-2 rounded-full border px-8 py-4 text-sm font-semibold transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
-              style={{ borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)" }}
-            >
-              {t("scroll")} ↓
-            </Link>
-          </div>
-
-          {/* Social proof strip */}
-          <div className="mt-16 flex flex-wrap items-center gap-6 border-t pt-8" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-            {[
-              { num: "250+", label: "Proiecte livrate" },
-              { num: "60+", label: "Clienți globali" },
-              { num: "15+", label: "Ani experiență" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-2">
-                <span className="text-2xl font-black text-white">{s.num}</span>
-                <span className="text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.4)" }}>
-                  {s.label}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </div>
