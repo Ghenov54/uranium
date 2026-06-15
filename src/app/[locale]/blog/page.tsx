@@ -3,6 +3,8 @@ import Link from "next/link";
 import { client } from "@/sanity/client";
 import { POSTS_QUERY } from "@/sanity/queries/posts";
 import { urlFor } from "@/sanity/lib/image";
+
+export const dynamic = "force-dynamic";
 import { PageHero } from "@/components/ui/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
 

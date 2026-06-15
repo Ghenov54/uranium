@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+
+export const dynamic = "force-dynamic";
 import { client } from "@/sanity/client";
 import {
   POST_QUERY,

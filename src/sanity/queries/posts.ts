@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const POSTS_QUERY = groq`
-  *[_type == "post" && language == $locale && defined(slug.current)]
+  *[_type == "post" && defined(slug.current) && (language == $locale || !defined(language))]
   | order(publishedAt desc)[0...20] {
     _id, title, slug, excerpt, mainImage, publishedAt, tags, language
   }
