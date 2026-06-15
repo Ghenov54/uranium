@@ -273,5 +273,17 @@
     "feature6Title": "Graphic Design",
     "feature6Desc": "Impactful visual materials for any occasion and platform."
   }
+},
+"blog": {
+  "label": "Blog",
+  "heading": "Articles & Insights",
+  "subtitle": "Ideas, tips and trends from the digital industry.",
+  "readMore": "Read article",
+  "publishedAt": "Published",
+  "tags": "Tags",
+  "relatedPosts": "Related articles",
+  "backToBlog": "Back to blog",
+  "noPostsFound": "No articles found.",
+  "minuteRead": "min read"
 }
 }

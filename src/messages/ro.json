@@ -273,5 +273,17 @@
     "feature6Title": "Graphic Design",
     "feature6Desc": "Materiale vizuale de impact pentru orice ocazie și platformă."
   }
+},
+"blog": {
+  "label": "Blog",
+  "heading": "Articole & Perspective",
+  "subtitle": "Idei, sfaturi și tendințe din industria digitală.",
+  "readMore": "Citește articolul",
+  "publishedAt": "Publicat",
+  "tags": "Etichete",
+  "relatedPosts": "Articole similare",
+  "backToBlog": "Înapoi la blog",
+  "noPostsFound": "Nu au fost găsite articole.",
+  "minuteRead": "min de citit"
 }
 }
