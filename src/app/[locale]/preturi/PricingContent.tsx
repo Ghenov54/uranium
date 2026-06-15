@@ -1,11 +1,28 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Tabs } from "@/components/ui/Tabs";
-import { pricingData } from "@/data/pricing";
+import { t as tLocale } from "@/sanity/lib/locale";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 
-export function PricingContent() {
+type LocaleField = Record<string, string | null | undefined> | null;
+type SanityPricingItem = {
+  name: LocaleField;
+  includes: LocaleField[];
+  priceFrom: number;
+  unit: LocaleField;
+};
+export type SanityPricingService = {
+  _id: string;
+  key: string;
+  items: SanityPricingItem[];
+  order?: number | null;
+};
+
+interface PricingContentProps {
+  services: SanityPricingService[];
+}
+
+export function PricingContent({ services }: PricingContentProps) {
   const t = useTranslations("pricing");
   const locale = useLocale();
 
@@ -20,60 +37,63 @@ export function PricingContent() {
   return (
     <Tabs tabs={tabs}>
       {(activeKey) => {
-        const service = pricingData.find((s) => s.key === activeKey);
+        const service = services.find((s) => s.key === activeKey);
         if (!service) return null;
         return (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {service.items.map((item) => (
-              <div
-                key={`${activeKey}-${item.name}`}
-                className="flex flex-col justify-between rounded-3xl p-8"
-                style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)" }}
-              >
-                <div>
-                  <h3
-                    className="text-xl font-black uppercase tracking-tight"
-                    style={{ color: "var(--color-text-primary)" }}
-                  >
-                    {item.name}
-                  </h3>
-                  <p
-                    className="mt-1 text-xs uppercase tracking-widest"
-                    style={{ color: "var(--color-text-muted)" }}
-                  >
-                    {t("includes")}
-                  </p>
-                  <ul className="mt-4 space-y-2">
-                    {item.includes.map((inc) => (
-                      <li key={inc} className="flex items-start gap-2 text-sm" style={{ color: "var(--color-text-muted)" }}>
-                        <span className="mt-0.5 shrink-0 text-xs" style={{ color: "var(--color-accent)" }}>✓</span>
-                        {inc}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-8">
-                  <p className="text-3xl font-black" style={{ color: "var(--color-text-primary)" }}>
-                    <span className="text-sm font-normal" style={{ color: "var(--color-text-muted)" }}>
-                      {t("from")}{" "}
-                    </span>
-                    {item.priceFrom.toLocaleString(locale)} €
-                    {item.unit && (
+            {service.items.map((item, idx) => {
+              const itemName = tLocale(item.name, locale);
+              return (
+                <div
+                  key={`${activeKey}-${idx}`}
+                  className="flex flex-col justify-between rounded-3xl p-8"
+                  style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)" }}
+                >
+                  <div>
+                    <h3
+                      className="text-xl font-black uppercase tracking-tight"
+                      style={{ color: "var(--color-text-primary)" }}
+                    >
+                      {itemName}
+                    </h3>
+                    <p
+                      className="mt-1 text-xs uppercase tracking-widest"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
+                      {t("includes")}
+                    </p>
+                    <ul className="mt-4 space-y-2">
+                      {item.includes.map((inc, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "var(--color-text-muted)" }}>
+                          <span className="mt-0.5 shrink-0 text-xs" style={{ color: "var(--color-accent)" }}>✓</span>
+                          {tLocale(inc, locale)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-8">
+                    <p className="text-3xl font-black" style={{ color: "var(--color-text-primary)" }}>
                       <span className="text-sm font-normal" style={{ color: "var(--color-text-muted)" }}>
-                        {item.unit}
+                        {t("from")}{" "}
                       </span>
-                    )}
-                  </p>
-                  <Link
-                    href={`/${locale}/contact`}
-                    className="mt-4 block w-full rounded-lg py-3 text-center text-sm font-bold uppercase tracking-wide transition-opacity hover:opacity-80"
-                    style={{ background: "var(--color-accent)", color: "#000" }}
-                  >
-                    {t("contactCta")}
-                  </Link>
+                      {item.priceFrom.toLocaleString(locale)} €
+                      {item.unit && (
+                        <span className="text-sm font-normal" style={{ color: "var(--color-text-muted)" }}>
+                          {tLocale(item.unit, locale)}
+                        </span>
+                      )}
+                    </p>
+                    <Link
+                      href={`/${locale}/contact`}
+                      className="mt-4 block w-full rounded-lg py-3 text-center text-sm font-bold uppercase tracking-wide transition-opacity hover:opacity-80"
+                      style={{ background: "var(--color-accent)", color: "#000" }}
+                    >
+                      {t("contactCta")}
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         );
       }}
