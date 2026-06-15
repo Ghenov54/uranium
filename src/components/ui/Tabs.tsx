@@ -12,12 +12,20 @@ type TabsProps = {
 export function Tabs({ tabs, children }: TabsProps) {
   const [active, setActive] = useState(tabs[0]?.key ?? "");
 
+  if (tabs.length === 0) return null;
+
   return (
     <div>
-      <div className="mb-10 flex flex-wrap gap-2 border-b pb-6" style={{ borderColor: "var(--color-border)" }}>
+      <div
+        role="tablist"
+        className="mb-10 flex flex-wrap gap-2 border-b pb-6"
+        style={{ borderColor: "var(--color-border)" }}
+      >
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            role="tab"
+            aria-selected={active === tab.key}
             onClick={() => setActive(tab.key)}
             className="rounded-full px-5 py-2 text-sm font-medium transition-colors"
             style={
@@ -30,7 +38,7 @@ export function Tabs({ tabs, children }: TabsProps) {
           </button>
         ))}
       </div>
-      <div>{children(active)}</div>
+      <div role="tabpanel">{children(active)}</div>
     </div>
   );
 }
