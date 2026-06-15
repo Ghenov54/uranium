@@ -1,5 +1,5 @@
 export function t(
-  field: Record<string, string> | null | undefined,
+  field: Record<string, string | null | undefined> | null | undefined,
   locale: string
 ): string {
   if (!field) return "";
