@@ -1,29 +1,37 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
+import { t as tLocale } from "@/sanity/lib/locale";
 
-type Service = {
-  key: string;
-  tags: string[];
+type SanityServiceItem = {
+  _id: string;
+  name: Record<string, string | null | undefined> | null;
+  slug: { current: string } | null;
+  description: Record<string, string | null | undefined> | null;
+  tags: string[] | null;
 };
 
-const services: Service[] = [
-  { key: "web", tags: ["React", "Next.js", "E-Commerce", "Landing Pages"] },
-  { key: "apps", tags: ["iOS", "Android", "Web App", "PWA"] },
-  { key: "marketing", tags: ["SEO", "Google Ads", "Meta Ads", "Social Media"] },
-  { key: "business", tags: ["CRM", "ERP", "Automation", "Consulting"] },
-  { key: "design", tags: ["UI/UX", "Branding", "Identity", "Prototyping"] },
+type Props = { items?: SanityServiceItem[] };
+
+const FALLBACK_SERVICES: SanityServiceItem[] = [
+  { _id: "web", name: { ro: "Dezvoltare Web", en: "Web Development", ru: "Веб-разработка" }, slug: { current: "web" }, description: { ro: "Soluții web care convertesc.", en: "Web solutions that convert.", ru: "Веб-решения, которые конвертируют." }, tags: ["React", "Next.js", "E-Commerce", "Landing Pages"] },
+  { _id: "apps", name: { ro: "Aplicații", en: "Applications", ru: "Приложения" }, slug: { current: "aplicatii" }, description: { ro: "Software custom.", en: "Custom software.", ru: "Кастомное ПО." }, tags: ["iOS", "Android", "Web App", "PWA"] },
+  { _id: "marketing", name: { ro: "Marketing Digital", en: "Digital Marketing", ru: "Цифровой маркетинг" }, slug: { current: "marketing" }, description: { ro: "Creștem branduri.", en: "We grow brands.", ru: "Растим бренды." }, tags: ["SEO", "Google Ads", "Meta Ads", "Social Media"] },
+  { _id: "business", name: { ro: "Soluții Business", en: "Business Solutions", ru: "Бизнес-решения" }, slug: { current: "business" }, description: { ro: "Automatizăm operațiunile.", en: "We automate operations.", ru: "Автоматизируем операции." }, tags: ["CRM", "ERP", "Automation", "Consulting"] },
+  { _id: "design", name: { ro: "Design & Branding", en: "Design & Branding", ru: "Дизайн и брендинг" }, slug: { current: "design" }, description: { ro: "Identitate vizuală.", en: "Visual identity.", ru: "Визуальная идентичность." }, tags: ["UI/UX", "Branding", "Identity", "Prototyping"] },
 ];
 
-export function ServicesSection() {
+export function ServicesSection({ items }: Props) {
   const t = useTranslations("services");
+  const locale = useLocale();
   const [active, setActive] = useState<string | null>("apps");
   const [hovered, setHovered] = useState<string | null>(null);
+
+  const services = items && items.length > 0 ? items : FALLBACK_SERVICES;
 
   return (
     <section className="py-24" style={{ background: "var(--color-bg)" }}>
       <div className="section-container">
-        {/* Header */}
         <div className="mb-12 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <div className="mb-4 flex items-center gap-3">
@@ -41,60 +49,50 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* Service rows */}
         <div className="divide-y divide-[var(--color-border)]">
           {services.map((service) => {
-            const isActive = active === service.key;
+            const id = service._id;
+            const isActive = active === id;
+            const name = tLocale(service.name, locale);
+            const description = tLocale(service.description, locale);
+            const tags = service.tags ?? [];
             return (
               <div
-                key={service.key}
+                key={id}
                 className="cursor-pointer px-4 py-8 transition-colors sm:px-6"
                 style={{
                   background: isActive
                     ? "var(--color-row-active)"
-                    : hovered === service.key
+                    : hovered === id
                     ? "var(--color-row-hover)"
                     : undefined,
                 }}
-                onMouseEnter={() => setHovered(service.key)}
+                onMouseEnter={() => setHovered(id)}
                 onMouseLeave={() => setHovered(null)}
-                onClick={() => setActive(isActive ? null : service.key)}
+                onClick={() => setActive(isActive ? null : id)}
               >
                 <div className="flex items-center justify-between gap-6">
                   <div className="flex-1">
-                    <div className="flex items-center gap-6">
-                      <h3
-                        className="text-3xl font-black uppercase tracking-tight transition-colors md:text-4xl"
-                        style={{
-                          color: isActive
-                            ? "var(--color-heading-active)"
-                            : "var(--color-text-primary)",
-                        }}
-                      >
-                        {t(service.key as "web" | "apps" | "marketing" | "business" | "design")}
-                      </h3>
-                    </div>
+                    <h3
+                      className="text-3xl font-black uppercase tracking-tight transition-colors md:text-4xl"
+                      style={{ color: isActive ? "var(--color-heading-active)" : "var(--color-text-primary)" }}
+                    >
+                      {name}
+                    </h3>
                     {isActive && (
                       <p className="mt-3 max-w-xl text-sm text-[var(--color-text-muted)]">
-                        {t(`${service.key}Desc` as "webDesc" | "appsDesc" | "marketingDesc" | "businessDesc" | "designDesc")}
+                        {description}
                       </p>
                     )}
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {service.tags.map((tag) => (
+                      {tags.map((tag) => (
                         <span
                           key={tag}
                           className="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
                           style={
                             isActive
-                              ? {
-                                  background: "var(--color-tag-active-bg)",
-                                  borderColor: "var(--color-tag-active-border)",
-                                  color: "var(--color-tag-active-text)",
-                                }
-                              : {
-                                  borderColor: "var(--color-border)",
-                                  color: "var(--color-text-muted)",
-                                }
+                              ? { background: "var(--color-tag-active-bg)", borderColor: "var(--color-tag-active-border)", color: "var(--color-tag-active-text)" }
+                              : { borderColor: "var(--color-border)", color: "var(--color-text-muted)" }
                           }
                         >
                           {tag}
@@ -106,15 +104,8 @@ export function ServicesSection() {
                     className="flex size-12 shrink-0 items-center justify-center rounded-full border transition-all"
                     style={
                       isActive
-                        ? {
-                            borderColor: "var(--color-accent)",
-                            background: "var(--color-accent)",
-                            color: "#000",
-                          }
-                        : {
-                            borderColor: "var(--color-border)",
-                            color: "var(--color-text-muted)",
-                          }
+                        ? { borderColor: "var(--color-accent)", background: "var(--color-accent)", color: "#000" }
+                        : { borderColor: "var(--color-border)", color: "var(--color-text-muted)" }
                     }
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
