@@ -1,12 +1,6 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
-
-const projects = [
-  { id: 1, title: "Studio Rebrand", category: "Brand Identity · Design", color: "#1e3a8a" },
-  { id: 2, title: "FinanceFlow Platform", category: "Product Design · Web App", color: "#2563eb" },
-  { id: 3, title: "Luxury E-Commerce", category: "Web Development · E-Commerce", color: "#374151" },
-  { id: 4, title: "Wellness Mobile App", category: "UI/UX · Mobile App", color: "#1f2937" },
-];
+import { projects } from "@/data/portfolio";
 
 export function PortfolioSection() {
   const t = useTranslations("portfolio");
@@ -42,7 +36,7 @@ export function PortfolioSection() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
+          {projects.slice(0, 4).map((project, i) => (
             <div
               key={project.id}
               className={`group relative overflow-hidden rounded-3xl ${i % 2 !== 0 ? "md:mt-12" : ""}`}
@@ -55,7 +49,7 @@ export function PortfolioSection() {
               <div className="flex items-end justify-between p-6">
                 <div>
                   <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                  <p className="mt-1 text-sm text-white/60">{project.category}</p>
+                  <p className="mt-1 text-sm text-white/60">{project.categoryLabel}</p>
                 </div>
                 <div className="flex size-12 items-center justify-center rounded-full border border-white/20 text-white transition-colors group-hover:border-accent group-hover:text-accent">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
