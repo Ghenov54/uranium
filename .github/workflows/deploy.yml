@@ -4,6 +4,8 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+  repository_dispatch:
+    types: [sanity-content-update]
 
 jobs:
   deploy:
@@ -25,6 +27,9 @@ jobs:
 
       - name: Build for Cloudflare
         run: npx @opennextjs/cloudflare build
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
 
       - name: Deploy to Cloudflare Workers
         run: npx wrangler deploy
@@ -33,3 +38,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Sanity secrets — set these in GitHub repository Settings → Secrets
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          SANITY_WEBHOOK_SECRET: ${{ secrets.SANITY_WEBHOOK_SECRET }}
