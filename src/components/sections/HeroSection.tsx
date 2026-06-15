@@ -27,7 +27,7 @@ export function HeroSection() {
           <p className="mb-4 text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
             Uranium Digital Agency
           </p>
-          <h1 className="mb-6 text-6xl font-black uppercase leading-none tracking-tight text-white md:text-8xl">
+          <h1 className="mb-6 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl lg:text-8xl">
             {t("tagline")}
           </h1>
           <p className="mb-8 max-w-md text-lg text-[var(--color-text-muted)]">

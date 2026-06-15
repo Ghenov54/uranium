@@ -18,6 +18,7 @@ const services: Service[] = [
 export function ServicesSection() {
   const t = useTranslations("services");
   const [active, setActive] = useState<string | null>("apps");
+  const [hovered, setHovered] = useState<string | null>(null);
 
   return (
     <section className="py-24" style={{ background: "var(--color-bg)" }}>
@@ -47,20 +48,28 @@ export function ServicesSection() {
             return (
               <div
                 key={service.key}
-                className={`group cursor-pointer py-8 transition-colors ${
-                  isActive ? "bg-accent/5" : "hover:bg-white/5"
-                }`}
+                className="cursor-pointer px-4 py-8 transition-colors sm:px-6"
+                style={{
+                  background: isActive
+                    ? "var(--color-row-active)"
+                    : hovered === service.key
+                    ? "var(--color-row-hover)"
+                    : undefined,
+                }}
+                onMouseEnter={() => setHovered(service.key)}
+                onMouseLeave={() => setHovered(null)}
                 onClick={() => setActive(isActive ? null : service.key)}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-6">
                       <h3
-                        className={`text-3xl font-black uppercase tracking-tight transition-colors md:text-4xl ${
-                          isActive
-                            ? "text-accent"
-                            : "text-[var(--color-text-primary)]"
-                        }`}
+                        className="text-3xl font-black uppercase tracking-tight transition-colors md:text-4xl"
+                        style={{
+                          color: isActive
+                            ? "var(--color-heading-active)"
+                            : "var(--color-text-primary)",
+                        }}
                       >
                         {t(service.key as "web" | "apps" | "marketing" | "business" | "design")}
                       </h3>
@@ -74,11 +83,19 @@ export function ServicesSection() {
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                          className="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+                          style={
                             isActive
-                              ? "border-accent/40 bg-accent/10 text-accent"
-                              : "border-[var(--color-border)] text-[var(--color-text-muted)]"
-                          }`}
+                              ? {
+                                  background: "var(--color-tag-active-bg)",
+                                  borderColor: "var(--color-tag-active-border)",
+                                  color: "var(--color-tag-active-text)",
+                                }
+                              : {
+                                  borderColor: "var(--color-border)",
+                                  color: "var(--color-text-muted)",
+                                }
+                          }
                         >
                           {tag}
                         </span>
@@ -86,11 +103,19 @@ export function ServicesSection() {
                     </div>
                   </div>
                   <div
-                    className={`flex size-12 shrink-0 items-center justify-center rounded-full border transition-all ${
+                    className="flex size-12 shrink-0 items-center justify-center rounded-full border transition-all"
+                    style={
                       isActive
-                        ? "border-accent bg-accent text-black"
-                        : "border-[var(--color-border)] text-[var(--color-text-muted)] group-hover:border-accent group-hover:text-accent"
-                    }`}
+                        ? {
+                            borderColor: "var(--color-accent)",
+                            background: "var(--color-accent)",
+                            color: "#000",
+                          }
+                        : {
+                            borderColor: "var(--color-border)",
+                            color: "var(--color-text-muted)",
+                          }
+                    }
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <line x1="7" y1="17" x2="17" y2="7"/>

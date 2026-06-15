@@ -6,6 +6,7 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-inter), sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 * {

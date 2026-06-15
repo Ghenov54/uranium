@@ -28,16 +28,19 @@ export function IntroSection() {
   ];
 
   return (
-    <section className="bg-white py-24 dark:bg-[var(--color-bg)]">
+    <section className="py-24" style={{ background: "var(--color-bg)" }}>
       <div className="section-container">
         {/* Heading */}
         <div className="mb-20 max-w-4xl">
-          <h2 className="text-5xl font-black uppercase leading-tight tracking-tight text-black dark:text-white md:text-6xl">
+          <h2
+            className="text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+            style={{ color: "var(--color-text-primary)" }}
+          >
             <span>{t("heading1")} </span>
             <span>{t("heading2")}</span>
             <br />
             <span>{t("heading3")} </span>
-            <span className="text-[#9ca3af]">{t("heading4")}</span>
+            <span style={{ color: "var(--color-text-muted)" }}>{t("heading4")}</span>
           </h2>
         </div>
 

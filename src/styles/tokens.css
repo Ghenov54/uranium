@@ -9,6 +9,14 @@
   --color-card-from: #1e3a8a;
   --color-card-to: #000000;
 
+  /* Service row active/hover states */
+  --color-heading-active: #d4ff37;
+  --color-tag-active-bg: rgba(212, 255, 55, 0.1);
+  --color-tag-active-border: rgba(212, 255, 55, 0.4);
+  --color-tag-active-text: #d4ff37;
+  --color-row-hover: rgba(255, 255, 255, 0.05);
+  --color-row-active: rgba(212, 255, 55, 0.05);
+
   /* Spacing */
   --spacing-section: 96px;
   --max-width: 1400px;
@@ -20,9 +28,17 @@
   --color-bg-surface: #f8f8f8;
   --color-text-primary: #111827;
   --color-text-muted: #6b7280;
-  --color-border: #f3f4f6;
+  --color-border: #e5e7eb;
   --color-card-from: #1e3a8a;
   --color-card-to: #2563eb;
+
+  /* Service row active/hover states — light mode */
+  --color-heading-active: #3d5e00;
+  --color-tag-active-bg: #111827;
+  --color-tag-active-border: #111827;
+  --color-tag-active-text: #d4ff37;
+  --color-row-hover: rgba(0, 0, 0, 0.03);
+  --color-row-active: rgba(212, 255, 55, 0.1);
 }
 
 /* Tailwind v4: @theme exposes these as utility classes (bg-accent, font-inter, max-w-container).
