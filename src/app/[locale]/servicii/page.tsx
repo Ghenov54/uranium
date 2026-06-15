@@ -6,6 +6,14 @@ import { t as tLocale } from "@/sanity/lib/locale";
 import { PageHero } from "@/components/ui/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
 
+type LocaleField = Record<string, string | null | undefined> | null;
+type SanityServiceListItem = {
+  _id: string;
+  name: LocaleField;
+  slug: { current: string } | null;
+  description: LocaleField;
+};
+
 const reasonIcons = [
   <svg key="star" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
   <svg key="zap" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
@@ -32,7 +40,7 @@ export default async function ServicesPage() {
       <section className="py-16" style={{ background: "var(--color-bg)" }}>
         <div className="section-container">
           <div className="divide-y" style={{ borderColor: "var(--color-border)" }}>
-            {serviceItems.map((service: { _id: string; name: Record<string, string | null | undefined> | null; slug: { current: string } | null; description: Record<string, string | null | undefined> | null }) => (
+            {serviceItems.map((service: SanityServiceListItem) => (
               <div key={service._id} className="flex items-center justify-between py-8">
                 <div>
                   <h2 className="text-3xl font-black uppercase tracking-tight md:text-4xl" style={{ color: "var(--color-text-primary)" }}>
