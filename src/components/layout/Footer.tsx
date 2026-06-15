@@ -1,30 +1,39 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
-export function Footer() {
+type SiteData = {
+  linkedinUrl?: string | null;
+  twitterUrl?: string | null;
+  instagramUrl?: string | null;
+} | null;
+
+type Props = { siteData?: SiteData };
+
+export function Footer({ siteData }: Props) {
   const t = useTranslations("footer");
+  const locale = useLocale();
 
   const serviceLinks = [
-    { label: "Web", href: "#" },
-    { label: "Aplicații", href: "#" },
-    { label: "Marketing", href: "#" },
-    { label: "Business", href: "#" },
-    { label: "Design", href: "#" },
+    { label: "Web", href: `/${locale}/servicii/web` },
+    { label: "Aplicații", href: `/${locale}/servicii/aplicatii` },
+    { label: "Marketing", href: `/${locale}/servicii/marketing` },
+    { label: "Business", href: `/${locale}/servicii/business` },
+    { label: "Design", href: `/${locale}/servicii/design` },
   ];
 
   const companyLinks = [
-    { label: t("aboutUs"), href: "#" },
-    { label: t("ourWork"), href: "#" },
+    { label: t("aboutUs"), href: `/${locale}/despre` },
+    { label: t("ourWork"), href: `/${locale}/portofoliu` },
     { label: t("careers"), href: "#" },
-    { label: t("blogLink"), href: "#" },
-    { label: t("contactLink"), href: "#" },
+    { label: t("blogLink"), href: `/${locale}/blog` },
+    { label: t("contactLink"), href: `/${locale}/contact` },
   ];
 
   const socialLinks = [
-    { label: "LI", href: "#", title: "LinkedIn" },
-    { label: "TW", href: "#", title: "Twitter/X" },
-    { label: "IG", href: "#", title: "Instagram" },
+    { label: "LI", href: siteData?.linkedinUrl ?? "#", title: "LinkedIn" },
+    { label: "TW", href: siteData?.twitterUrl ?? "#", title: "Twitter/X" },
+    { label: "IG", href: siteData?.instagramUrl ?? "#", title: "Instagram" },
   ];
 
   return (
@@ -41,7 +50,7 @@ export function Footer() {
           className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 pb-12 border-b lg:gap-12"
           style={{ borderColor: "var(--color-border)" }}
         >
-          {/* Column 1 — Brand (full width on mobile) */}
+          {/* Column 1 — Brand */}
           <div className="col-span-2 md:col-span-1">
             <span
               className="text-2xl font-black"
@@ -55,8 +64,6 @@ export function Footer() {
             >
               Creăm experiențe digitale extraordinare.
             </p>
-
-            {/* Social links */}
             <div className="mt-6 flex gap-4">
               {socialLinks.map((social) => (
                 <a
@@ -97,8 +104,7 @@ export function Footer() {
                       (e.currentTarget.style.color = "var(--color-accent)")
                     }
                     onMouseOut={(e) =>
-                      (e.currentTarget.style.color =
-                        "var(--color-text-primary)")
+                      (e.currentTarget.style.color = "var(--color-text-primary)")
                     }
                   >
                     {link.label}
@@ -127,8 +133,7 @@ export function Footer() {
                       (e.currentTarget.style.color = "var(--color-accent)")
                     }
                     onMouseOut={(e) =>
-                      (e.currentTarget.style.color =
-                        "var(--color-text-primary)")
+                      (e.currentTarget.style.color = "var(--color-text-primary)")
                     }
                   >
                     {link.label}
@@ -138,7 +143,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4 — Newsletter (full width on mobile) */}
+          {/* Column 4 — Newsletter */}
           <div className="col-span-2 md:col-span-1">
             <p
               className="text-xs uppercase tracking-widest mb-2"
@@ -186,19 +191,11 @@ export function Footer() {
         >
           <span>{t("copyright")}</span>
           <div className="flex gap-2">
-            <a
-              href="#"
-              className="hover:underline"
-              style={{ color: "var(--color-text-muted)" }}
-            >
+            <a href="#" className="hover:underline" style={{ color: "var(--color-text-muted)" }}>
               {t("privacy")}
             </a>
             <span>·</span>
-            <a
-              href="#"
-              className="hover:underline"
-              style={{ color: "var(--color-text-muted)" }}
-            >
+            <a href="#" className="hover:underline" style={{ color: "var(--color-text-muted)" }}>
               {t("terms")}
             </a>
           </div>
