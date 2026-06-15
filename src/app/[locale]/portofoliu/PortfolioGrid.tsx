@@ -68,7 +68,7 @@ export function PortfolioGrid() {
 
       {visible.length === 0 && (
         <p className="py-16 text-center text-sm" style={{ color: "var(--color-text-muted)" }}>
-          No projects in this category yet.
+          Nu există proiecte în această categorie.
         </p>
       )}
     </div>

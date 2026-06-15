@@ -1,5 +1,4 @@
-import { useTranslations } from "next-intl";
-import { getLocale } from "next-intl/server";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
@@ -26,10 +25,10 @@ const reasonIcons = [
   <svg key="chart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
 ];
 
-export default async function ServicesPage() {
-  const locale = await getLocale();
+export default function ServicesPage() {
   const t = useTranslations("serviciiPage");
   const tServices = useTranslations("services");
+  const locale = useLocale();
 
   const reasons = [
     { title: t("reason1Title"), desc: t("reason1Desc"), icon: reasonIcons[0] },
