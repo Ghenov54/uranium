@@ -5,6 +5,13 @@ export type ContactState = {
   error?: string;
 };
 
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 export async function submitContact(formData: FormData): Promise<ContactState> {
   const name = (formData.get("name") as string | null)?.trim() ?? "";
   const email = (formData.get("email") as string | null)?.trim() ?? "";
@@ -21,6 +28,10 @@ export async function submitContact(formData: FormData): Promise<ContactState> {
     return { success: false, error: "Adresă de email invalidă." };
   }
 
+  if (message.length > 2000) {
+    return { success: false, error: "Mesajul este prea lung (max 2000 caractere)." };
+  }
+
   const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
@@ -30,11 +41,11 @@ export async function submitContact(formData: FormData): Promise<ContactState> {
 
   const text =
     `🔔 <b>Nou mesaj de contact — Uranium</b>\n\n` +
-    `👤 <b>Nume:</b> ${name}\n` +
-    `📧 <b>Email:</b> ${email}\n` +
-    `📞 <b>Telefon:</b> ${phone || "—"}\n` +
-    `🛠 <b>Serviciu:</b> ${service}\n\n` +
-    `💬 <b>Mesaj:</b>\n${message}`;
+    `👤 <b>Nume:</b> ${esc(name)}\n` +
+    `📧 <b>Email:</b> ${esc(email)}\n` +
+    `📞 <b>Telefon:</b> ${esc(phone) || "—"}\n` +
+    `🛠 <b>Serviciu:</b> ${esc(service)}\n\n` +
+    `💬 <b>Mesaj:</b>\n${esc(message)}`;
 
   try {
     const res = await fetch(
@@ -46,10 +57,13 @@ export async function submitContact(formData: FormData): Promise<ContactState> {
       }
     );
     if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      console.error("Telegram API error:", body);
       return { success: false, error: "Eroare la trimitere. Încearcă din nou." };
     }
     return { success: true };
-  } catch {
+  } catch (err) {
+    console.error("Contact form network error:", err);
     return { success: false, error: "Eroare de rețea. Încearcă din nou." };
   }
 }
