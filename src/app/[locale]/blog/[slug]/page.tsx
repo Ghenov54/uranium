@@ -1,16 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-
-export const dynamic = "force-dynamic";
 import { client } from "@/sanity/client";
-import {
-  POST_QUERY,
-  POST_SLUGS_QUERY,
-  RELATED_POSTS_QUERY,
-} from "@/sanity/queries/posts";
+import { POST_QUERY, RELATED_POSTS_QUERY } from "@/sanity/queries/posts";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableTextRenderer } from "@/components/blog/PortableTextRenderer";
+
+export const dynamic = "force-dynamic";
 
 type SanityPost = {
   _id: string;
@@ -34,14 +30,6 @@ type SanityRelatedPost = {
 };
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
-
-export async function generateStaticParams() {
-  const slugs = await client.fetch(POST_SLUGS_QUERY).catch(() => []);
-  return slugs.map((s: { slug: string; locale: string }) => ({
-    slug: s.slug,
-    locale: s.locale,
-  }));
-}
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
