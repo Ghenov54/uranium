@@ -26,7 +26,7 @@ export function PricingContent() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {service.items.map((item) => (
               <div
-                key={item.name}
+                key={`${activeKey}-${item.name}`}
                 className="flex flex-col justify-between rounded-3xl p-8"
                 style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)" }}
               >
@@ -57,7 +57,7 @@ export function PricingContent() {
                     <span className="text-sm font-normal" style={{ color: "var(--color-text-muted)" }}>
                       {t("from")}{" "}
                     </span>
-                    {item.priceFrom.toLocaleString("ro-RO")} €
+                    {item.priceFrom.toLocaleString(locale)} €
                     {item.unit && (
                       <span className="text-sm font-normal" style={{ color: "var(--color-text-muted)" }}>
                         {item.unit}
