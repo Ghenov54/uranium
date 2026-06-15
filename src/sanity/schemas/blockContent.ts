@@ -28,6 +28,16 @@ export const blockContent = defineType({
         ],
       },
     }),
-    defineArrayMember({ type: "image", options: { hotspot: true } }),
+    defineArrayMember({
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alt text",
+        },
+      ],
+    }),
   ],
 });
