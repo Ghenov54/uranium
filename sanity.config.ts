@@ -8,8 +8,8 @@ export default defineConfig({
   name: "uranium",
   title: "Uranium Studio",
   basePath: "/studio",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
+  projectId: "3avhk8pg",
+  dataset: "production",
   plugins: [
     structureTool({ structure }),
     documentInternationalization({
