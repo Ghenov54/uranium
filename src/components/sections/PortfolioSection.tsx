@@ -9,6 +9,7 @@ type SanityPortfolioItem = {
   categoryLabel: Record<string, string | null | undefined> | null;
   mainImage?: { asset?: { _ref?: string } } | null;
   color?: string | null;
+  slug?: { current: string } | null;
 };
 
 type Props = { projects?: SanityPortfolioItem[] };
@@ -17,6 +18,9 @@ export function PortfolioSection({ projects }: Props) {
   const t = useTranslations("portfolio");
   const locale = useLocale();
   const displayed = (projects ?? []).slice(0, 6);
+
+  const itemHref = (p: SanityPortfolioItem) =>
+    p.slug?.current ? `/${locale}/portofoliu/${p.slug.current}` : `/${locale}/portofoliu`;
 
   return (
     <section className="py-24" style={{ background: "var(--color-bg)" }}>
@@ -54,7 +58,7 @@ export function PortfolioSection({ projects }: Props) {
             : null;
           return (
             <Link
-              href={`/${locale}/portofoliu`}
+              href={itemHref(p)}
               className="group relative mb-6 block overflow-hidden rounded-3xl"
               style={{ minHeight: 480, backgroundColor: p.color ?? "#1e3a8a" }}
             >
@@ -95,7 +99,7 @@ export function PortfolioSection({ projects }: Props) {
             return (
               <Link
                 key={project._id}
-                href={`/${locale}/portofoliu`}
+                href={itemHref(project)}
                 className={`group relative overflow-hidden rounded-3xl ${i % 2 !== 0 ? "md:mt-10" : ""}`}
                 style={{ minHeight: 380, backgroundColor: project.color ?? "#1e3a8a" }}
               >
