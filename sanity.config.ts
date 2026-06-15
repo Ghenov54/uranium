@@ -2,6 +2,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { documentInternationalization } from "@sanity/document-internationalization";
 import { schema } from "./src/sanity/schemas";
+import { structure } from "./src/sanity/structure";
 
 export default defineConfig({
   name: "uranium",
@@ -10,7 +11,7 @@ export default defineConfig({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
   plugins: [
-    structureTool(),
+    structureTool({ structure }),
     documentInternationalization({
       supportedLanguages: [
         { id: "ro", title: "Română" },
