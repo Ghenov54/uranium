@@ -1,6 +1,10 @@
-import { useTranslations } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { PageHero } from "@/components/ui/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
+import { client } from "@/sanity/client";
+import { TEAM_QUERY } from "@/sanity/queries/team";
+import { t as tLocale } from "@/sanity/lib/locale";
+import { urlFor } from "@/sanity/lib/image";
 
 const valueIcons = [
   // Award
@@ -13,21 +17,31 @@ const valueIcons = [
   <svg key="eye" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
 ];
 
-export default function AboutPage() {
-  const t = useTranslations("aboutPage");
+type LocaleField = Record<string, string | null | undefined> | null;
+type SanityTeamMember = {
+  _id: string;
+  name: LocaleField;
+  role: LocaleField;
+  bio: LocaleField;
+  photo?: { asset?: { _ref?: string } } | null;
+  order?: number | null;
+};
+
+export default async function AboutPage() {
+  const [t, locale] = await Promise.all([
+    getTranslations("aboutPage"),
+    getLocale(),
+  ]);
+
+  const teamMembers: SanityTeamMember[] = await client
+    .fetch<SanityTeamMember[]>(TEAM_QUERY)
+    .catch(() => []);
 
   const values = [
     { title: t("value1Title"), desc: t("value1Desc"), icon: valueIcons[0] },
     { title: t("value2Title"), desc: t("value2Desc"), icon: valueIcons[1] },
     { title: t("value3Title"), desc: t("value3Desc"), icon: valueIcons[2] },
     { title: t("value4Title"), desc: t("value4Desc"), icon: valueIcons[3] },
-  ];
-
-  const members = [
-    { name: t("member1Name"), role: t("member1Role"), bg: "#1e3a8a" },
-    { name: t("member2Name"), role: t("member2Role"), bg: "#065f46" },
-    { name: t("member3Name"), role: t("member3Role"), bg: "#312e81" },
-    { name: t("member4Name"), role: t("member4Role"), bg: "#1c1917" },
   ];
 
   return (
@@ -103,35 +117,57 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-24" style={{ background: "var(--color-bg)" }}>
-        <div className="section-container">
-          <p
-            className="mb-12 text-xs uppercase tracking-widest"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            {t("teamLabel")}
-          </p>
-          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {members.map((m) => (
-              <div key={m.name} className="flex flex-col items-center text-center">
-                <div
-                  className="mb-4 size-24 rounded-full"
-                  style={{ background: `linear-gradient(135deg, ${m.bg} 0%, var(--color-bg) 100%)` }}
-                />
-                <p
-                  className="text-sm font-bold"
-                  style={{ color: "var(--color-text-primary)" }}
-                >
-                  {m.name}
-                </p>
-                <p className="mt-1 text-xs" style={{ color: "var(--color-text-muted)" }}>
-                  {m.role}
-                </p>
-              </div>
-            ))}
+      {teamMembers.length > 0 && (
+        <section className="py-24" style={{ background: "var(--color-bg)" }}>
+          <div className="section-container">
+            <p
+              className="mb-12 text-xs uppercase tracking-widest"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {t("teamLabel")}
+            </p>
+            <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+              {teamMembers.map((member) => {
+                const name = tLocale(member.name, locale);
+                const role = tLocale(member.role, locale);
+                const photoUrl = member.photo?.asset?._ref
+                  ? urlFor(member.photo).width(400).url()
+                  : null;
+
+                return (
+                  <div key={member._id} className="flex flex-col items-center text-center">
+                    {photoUrl ? (
+                      <img
+                        src={photoUrl}
+                        alt={name}
+                        width={96}
+                        height={96}
+                        className="mb-4 size-24 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="mb-4 size-24 rounded-full"
+                        style={{
+                          background: "linear-gradient(135deg, var(--color-card-from) 0%, var(--color-bg) 100%)",
+                        }}
+                      />
+                    )}
+                    <p
+                      className="text-sm font-bold"
+                      style={{ color: "var(--color-text-primary)" }}
+                    >
+                      {name}
+                    </p>
+                    <p className="mt-1 text-xs" style={{ color: "var(--color-text-muted)" }}>
+                      {role}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTASection />
     </>
