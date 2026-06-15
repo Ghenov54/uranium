@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
+import Link from "next/link";
 import { t as tLocale } from "@/sanity/lib/locale";
 
 type SanityServiceItem = {
@@ -44,15 +45,24 @@ export function ServicesSection({ items }: Props) {
               {t("heading")}
             </h2>
           </div>
-          <p className="max-w-xs text-sm text-[var(--color-text-muted)]">
-            Soluții complete pentru fiecare etapă a creșterii tale digitale.
-          </p>
+          <Link
+            href={`/${locale}/servicii`}
+            className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--color-accent)]"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Toate serviciile
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
         </div>
 
         <div className="divide-y divide-[var(--color-border)]">
           {services.map((service) => {
             const id = service._id;
             const isActive = active === id;
+            const slug = service.slug?.current ?? id;
             const name = tLocale(service.name, locale);
             const description = tLocale(service.description, locale);
             const tags = service.tags ?? [];
@@ -80,9 +90,19 @@ export function ServicesSection({ items }: Props) {
                       {name}
                     </h3>
                     {isActive && (
-                      <p className="mt-3 max-w-xl text-sm text-[var(--color-text-muted)]">
-                        {description}
-                      </p>
+                      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
+                        <p className="max-w-xl text-sm leading-relaxed text-[var(--color-text-muted)]">
+                          {description}
+                        </p>
+                        <Link
+                          href={`/${locale}/servicii/${slug}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="shrink-0 inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs font-semibold transition-all hover:bg-[var(--color-accent)] hover:text-black"
+                          style={{ borderColor: "var(--color-accent)", color: "var(--color-accent)" }}
+                        >
+                          Descoperă serviciul →
+                        </Link>
+                      </div>
                     )}
                     <div className="mt-3 flex flex-wrap gap-2">
                       {tags.map((tag) => (
@@ -100,8 +120,10 @@ export function ServicesSection({ items }: Props) {
                       ))}
                     </div>
                   </div>
-                  <div
-                    className="flex size-12 shrink-0 items-center justify-center rounded-full border transition-all"
+                  <Link
+                    href={`/${locale}/servicii/${slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex size-12 shrink-0 items-center justify-center rounded-full border transition-all hover:bg-[var(--color-accent)] hover:text-black"
                     style={
                       isActive
                         ? { borderColor: "var(--color-accent)", background: "var(--color-accent)", color: "#000" }
@@ -109,14 +131,28 @@ export function ServicesSection({ items }: Props) {
                     }
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="7" y1="17" x2="17" y2="7"/>
-                      <polyline points="7 7 17 7 17 17"/>
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
                     </svg>
-                  </div>
+                  </Link>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href={`/${locale}/servicii`}
+            className="inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-semibold transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            style={{ borderColor: "var(--color-border)", color: "var(--color-text-primary)" }}
+          >
+            Toate serviciile noastre
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
