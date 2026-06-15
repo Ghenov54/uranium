@@ -1,3 +1,5 @@
+import type { ProjectCategory } from "./portfolio";
+
 export type PricingItem = {
   name: string;
   includes: string[];
@@ -6,7 +8,7 @@ export type PricingItem = {
 };
 
 export type ServicePricing = {
-  key: "web" | "apps" | "marketing" | "business" | "design";
+  key: ProjectCategory;
   items: PricingItem[];
 };
 
