@@ -116,7 +116,7 @@ export default function AboutPage() {
               <div key={m.name} className="flex flex-col items-center text-center">
                 <div
                   className="mb-4 size-24 rounded-full"
-                  style={{ background: `linear-gradient(135deg, ${m.bg} 0%, #000 100%)` }}
+                  style={{ background: `linear-gradient(135deg, ${m.bg} 0%, var(--color-bg) 100%)` }}
                 />
                 <p
                   className="text-sm font-bold"
