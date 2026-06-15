@@ -16,7 +16,7 @@ export function PortfolioSection() {
     <section className="py-24" style={{ background: "var(--color-bg)" }}>
       <div className="section-container">
         {/* Header */}
-        <div className="mb-12 flex items-end justify-between">
+        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-8 bg-[var(--color-text-muted)]" />
@@ -24,7 +24,7 @@ export function PortfolioSection() {
                 {t("label")}
               </span>
             </div>
-            <h2 className="text-5xl font-black uppercase leading-tight tracking-tight text-[var(--color-text-primary)] md:text-6xl">
+            <h2 className="text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-text-primary)] md:text-5xl lg:text-6xl">
               {t("heading")}
             </h2>
           </div>

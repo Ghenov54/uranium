@@ -38,11 +38,11 @@ export function Footer() {
       <div className="section-container">
         {/* Top grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b"
+          className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 pb-12 border-b lg:gap-12"
           style={{ borderColor: "var(--color-border)" }}
         >
-          {/* Column 1 — Brand */}
-          <div>
+          {/* Column 1 — Brand (full width on mobile) */}
+          <div className="col-span-2 md:col-span-1">
             <span
               className="text-2xl font-black"
               style={{ color: "var(--color-text-primary)" }}
@@ -138,8 +138,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4 — Newsletter */}
-          <div>
+          {/* Column 4 — Newsletter (full width on mobile) */}
+          <div className="col-span-2 md:col-span-1">
             <p
               className="text-xs uppercase tracking-widest mb-2"
               style={{ color: "var(--color-text-muted)" }}
