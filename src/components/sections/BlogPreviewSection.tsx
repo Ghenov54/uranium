@@ -1,6 +1,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 
 type SanityPost = {
   _id: string;
@@ -27,7 +28,7 @@ export function BlogPreviewSection({ posts }: Props) {
       style={{ borderColor: "var(--color-border)", background: "var(--color-bg-surface)" }}
     >
       <div className="section-container">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <AnimateIn className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-8 bg-[var(--color-text-muted)]" />
@@ -53,7 +54,7 @@ export function BlogPreviewSection({ posts }: Props) {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
-        </div>
+        </AnimateIn>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {displayed.map((post, i) => {
@@ -62,76 +63,83 @@ export function BlogPreviewSection({ posts }: Props) {
               : null;
             const isFeature = i === 0;
             return (
-              <Link
+              <AnimateIn
                 key={post._id}
-                href={`/${locale}/blog/${post.slug?.current ?? ""}`}
-                className={`group flex flex-col overflow-hidden rounded-3xl transition-transform hover:-translate-y-1 ${isFeature ? "md:col-span-2 md:row-span-2" : ""}`}
-                style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)" }}
+                delay={i * 120}
+                className={isFeature ? "md:col-span-2 md:row-span-2" : ""}
               >
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt={post.title ?? ""}
-                    className={`w-full object-cover ${isFeature ? "aspect-[16/9]" : "aspect-video"}`}
-                  />
-                ) : (
-                  <div
-                    className={`w-full ${isFeature ? "aspect-[16/9]" : "aspect-video"}`}
-                    style={{ background: "var(--color-bg-elevated)" }}
-                  />
-                )}
-                <div className="flex flex-1 flex-col p-6">
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="mb-3 flex flex-wrap gap-2">
-                      {post.tags.slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full px-3 py-1 text-xs font-medium"
-                          style={{ background: "var(--color-accent)", color: "#000" }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                <Link
+                  href={`/${locale}/blog/${post.slug?.current ?? ""}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl transition-transform hover:-translate-y-1"
+                  style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)" }}
+                >
+                  {imageUrl ? (
+                    <div className="overflow-hidden">
+                      <img
+                        src={imageUrl}
+                        alt={post.title ?? ""}
+                        className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 ${isFeature ? "aspect-[16/9]" : "aspect-video"}`}
+                      />
                     </div>
+                  ) : (
+                    <div
+                      className={`w-full ${isFeature ? "aspect-[16/9]" : "aspect-video"}`}
+                      style={{ background: "var(--color-bg-surface)" }}
+                    />
                   )}
-                  <h3
-                    className={`mb-2 font-black uppercase leading-tight tracking-tight ${isFeature ? "text-xl md:text-2xl" : "text-base"}`}
-                    style={{ color: "var(--color-text-primary)" }}
-                  >
-                    {post.title}
-                  </h3>
-                  {post.excerpt && (
-                    <p
-                      className="mb-4 flex-1 text-sm leading-relaxed line-clamp-2"
-                      style={{ color: "var(--color-text-muted)" }}
-                    >
-                      {post.excerpt}
-                    </p>
-                  )}
-                  <div className="mt-auto flex items-center justify-between">
-                    {post.publishedAt && (
-                      <time className="text-xs" style={{ color: "var(--color-text-muted)" }}>
-                        {new Date(post.publishedAt).toLocaleDateString(locale, {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </time>
+                  <div className="flex flex-1 flex-col p-6">
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full px-3 py-1 text-xs font-medium"
+                            style={{ background: "var(--color-accent)", color: "#000" }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     )}
-                    <span className="text-xs font-semibold" style={{ color: "var(--color-accent)" }}>
-                      {t("readMore")} →
-                    </span>
+                    <h3
+                      className={`mb-2 font-black uppercase leading-tight tracking-tight ${isFeature ? "text-xl md:text-2xl" : "text-base"}`}
+                      style={{ color: "var(--color-text-primary)" }}
+                    >
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p
+                        className="mb-4 flex-1 text-sm leading-relaxed line-clamp-2"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        {post.excerpt}
+                      </p>
+                    )}
+                    <div className="mt-auto flex items-center justify-between">
+                      {post.publishedAt && (
+                        <time className="text-xs" style={{ color: "var(--color-text-muted)" }}>
+                          {new Date(post.publishedAt).toLocaleDateString(locale, {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </time>
+                      )}
+                      <span className="text-xs font-semibold transition-colors group-hover:underline" style={{ color: "var(--color-accent)" }}>
+                        {t("readMore")} →
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </AnimateIn>
             );
           })}
         </div>
 
-        <div className="mt-12 text-center">
+        <AnimateIn delay={300} className="mt-12 text-center">
           <Link
             href={`/${locale}/blog`}
-            className="inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-semibold transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-semibold transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:scale-105"
             style={{ borderColor: "var(--color-border)", color: "var(--color-text-primary)" }}
           >
             Explorează blogul
@@ -140,7 +148,7 @@ export function BlogPreviewSection({ posts }: Props) {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

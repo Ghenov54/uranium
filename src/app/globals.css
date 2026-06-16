@@ -1,6 +1,44 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* ─── Hero load animations ─────────────────────────────────── */
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation: heroSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.hero-anim-fade {
+  opacity: 0;
+  animation: heroFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.hero-d1 { animation-delay: 80ms; }
+.hero-d2 { animation-delay: 220ms; }
+.hero-d3 { animation-delay: 380ms; }
+.hero-d4 { animation-delay: 560ms; }
+.hero-d5 { animation-delay: 800ms; }
+
+/* ─── Pulse glow on accent elements ───────────────────────── */
+@keyframes accentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 255, 55, 0); }
+  50%       { box-shadow: 0 0 28px 4px rgba(212, 255, 55, 0.18); }
+}
+.accent-pulse { animation: accentPulse 3s ease-in-out infinite; }
+
+/* ─── Floating vertical drift ──────────────────────────────── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+.float-slow { animation: floatY 5s ease-in-out infinite; }
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
