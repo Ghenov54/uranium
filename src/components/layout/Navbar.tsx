@@ -2,6 +2,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
@@ -10,8 +11,13 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Only be transparent on homepage (dark hero background)
+  const isHomepage = pathname === `/${locale}` || pathname === "/";
+  const transparent = isHomepage && !scrolled;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -41,9 +47,9 @@ export function Navbar() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-          scrolled
-            ? "border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur-md"
-            : "bg-transparent"
+          transparent
+            ? "bg-transparent"
+            : "border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur-md"
         )}
       >
         <div className="section-container flex h-16 items-center justify-between">
@@ -52,7 +58,7 @@ export function Navbar() {
             href={`/${locale}`}
             className={cn(
               "text-xl font-black uppercase tracking-tight transition-colors duration-300",
-              scrolled ? "text-[var(--color-text-primary)]" : "text-white"
+              transparent ? "text-white" : "text-[var(--color-text-primary)]"
             )}
           >
             URANIUM.
@@ -66,9 +72,9 @@ export function Navbar() {
                 href={link.href}
                 className={cn(
                   "text-sm transition-colors duration-300",
-                  scrolled
-                    ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-                    : "text-white/70 hover:text-white"
+                  transparent
+                    ? "text-white/70 hover:text-white"
+                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
                 )}
               >
                 {link.label}
@@ -89,9 +95,9 @@ export function Navbar() {
           <button
             className={cn(
               "flex size-10 items-center justify-center rounded-xl border transition-all duration-300 md:hidden",
-              scrolled
-                ? "border-[var(--color-border)] text-[var(--color-text-primary)]"
-                : "border-white/20 text-white"
+              transparent
+                ? "border-white/20 text-white"
+                : "border-[var(--color-border)] text-[var(--color-text-primary)]"
             )}
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
