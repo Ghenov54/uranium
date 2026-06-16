@@ -58,17 +58,21 @@
   "about": {
     "label": "Despre noi",
     "heading": "ECHIPA DIN SPATELE MUNCII",
+    "subtitle": "Servicii complete create să eleveze brandul tău și să accelereze creșterea prin excelență strategică în design.",
     "mission": "MISIUNEA NOASTRĂ",
     "missionText": "Misiunea noastră este să împuternicim branduri prin design excepțional care nu doar generează rezultate de business, ci și construiește conexiuni durabile cu audiența lor.",
+    "quote": "Cu peste 10 ani de experiență în strategii creative pentru companii și startup-uri inovatoare din toată lumea.",
     "delivery": "LIVRARE LA TIMP",
     "support": "SUPORT",
     "countries": "ȚĂRI",
     "supportLabel": "24/7",
-    "countriesLabel": "15"
+    "countriesLabel": "15",
+    "teamLink": "Despre echipă"
   },
   "testimonials": {
     "label": "Testimoniale",
-    "heading": "POVEȘTILE CLIENȚILOR"
+    "heading": "POVEȘTILE CLIENȚILOR",
+    "description": "Testimoniale autentice de la branduri pe care le-am transformat și ridicat la noi culmi de succes."
   },
   "cta": {
     "label": "Hai să colaborăm",

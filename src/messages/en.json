@@ -58,17 +58,21 @@
   "about": {
     "label": "About us",
     "heading": "MAN BEHIND WORK",
+    "subtitle": "Comprehensive services designed to elevate your brand and accelerate growth through strategic design excellence.",
     "mission": "OUR MISSION",
     "missionText": "Our mission is to empower brands through outstanding design that not only drives significant business results but also fosters enduring connections with their audiences.",
+    "quote": "With 10+ years of experience leading creative strategy for businesses and innovative startups across the globe.",
     "delivery": "ON-TIME DELIVERY RATE",
     "support": "SUPPORT",
     "countries": "COUNTRIES",
     "supportLabel": "24/7",
-    "countriesLabel": "15"
+    "countriesLabel": "15",
+    "teamLink": "Meet our team"
   },
   "testimonials": {
     "label": "Testimonials",
-    "heading": "CLIENT STORIES"
+    "heading": "CLIENT STORIES",
+    "description": "Genuine testimonials from brands we have successfully transformed and elevated to new heights."
   },
   "cta": {
     "label": "Let's work together",
