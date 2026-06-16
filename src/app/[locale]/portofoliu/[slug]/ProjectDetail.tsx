@@ -94,6 +94,7 @@ export function ProjectDetail({ project, related }: Props) {
             style={{ maxHeight: "70vh" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-transparent" />
 
           {/* Expand hint */}
           <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 py-2 text-xs text-white/80 backdrop-blur-sm">
