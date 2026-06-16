@@ -57,9 +57,9 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
       </div>
 
       <div className="section-container relative z-10 w-full">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="max-w-4xl">
           {/* Eyebrow */}
-          <div className="mb-6 flex items-center justify-center gap-3 hero-anim hero-d1">
+          <div className="mb-6 flex items-center gap-3 hero-anim hero-d1">
             <div className="h-px w-8" style={{ background: "var(--color-accent)" }} />
             <p className="text-xs uppercase tracking-widest" style={{ color: "var(--color-accent)" }}>
               Uranium Digital Agency
@@ -78,14 +78,14 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
 
           {/* Subtitle */}
           <p
-            className="mb-10 mx-auto max-w-lg text-base leading-relaxed md:text-lg hero-anim hero-d3"
+            className="mb-10 max-w-lg text-base leading-relaxed md:text-lg hero-anim hero-d3"
             style={{ color: "var(--color-text-muted)" }}
           >
             {displaySubtitle}
           </p>
 
           {/* CTA */}
-          <div className="flex flex-wrap items-center justify-center gap-4 hero-anim hero-d4">
+          <div className="flex flex-wrap items-center gap-4 hero-anim hero-d4">
             <Link
               href={`/${locale}/contact`}
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold transition-all hover:opacity-90 hover:scale-105 accent-pulse"
