@@ -66,7 +66,7 @@ export function AboutSection() {
                   src="https://picsum.photos/seed/uranium-studio/900/700"
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
-                  style={{ opacity: 0.18, mixBlendMode: "luminosity" }}
+                  style={{ opacity: 0.45 }}
                 />
 
                 {/* Accent glow */}

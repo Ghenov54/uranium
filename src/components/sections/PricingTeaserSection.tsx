@@ -10,6 +10,7 @@ const PACKAGES = [
       </svg>
     ),
     key: "web",
+    image: "https://picsum.photos/seed/pricing-web/800/600",
     label: { ro: "Dezvoltare Web", en: "Web Development", ru: "Веб-разработка" },
     from: "€800",
     unit: { ro: "per proiect", en: "per project", ru: "за проект" },
@@ -27,6 +28,7 @@ const PACKAGES = [
       </svg>
     ),
     key: "apps",
+    image: "https://picsum.photos/seed/pricing-apps/800/600",
     label: { ro: "Aplicații Mobile", en: "Mobile Apps", ru: "Мобильные приложения" },
     from: "€3.000",
     unit: { ro: "per proiect", en: "per project", ru: "за проект" },
@@ -44,6 +46,7 @@ const PACKAGES = [
       </svg>
     ),
     key: "marketing",
+    image: "https://picsum.photos/seed/pricing-marketing/800/600",
     label: { ro: "Marketing Digital", en: "Digital Marketing", ru: "Цифровой маркетинг" },
     from: "€500",
     unit: { ro: "pe lună", en: "per month", ru: "в месяц" },
@@ -93,95 +96,103 @@ export function PricingTeaserSection() {
           </Link>
         </div>
 
-        {/* Cards */}
+        {/* Cards with image backgrounds */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {PACKAGES.map((pkg) => (
             <div
               key={pkg.key}
-              className="relative flex flex-col rounded-3xl p-8 transition-transform hover:-translate-y-1"
-              style={{
-                background: pkg.featured
-                  ? "linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%)"
-                  : "var(--color-bg-surface)",
-                border: pkg.featured ? "1px solid rgba(255,255,255,0.1)" : "1px solid var(--color-border)",
-              }}
+              className="group relative flex flex-col overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-2"
+              style={{ minHeight: 520 }}
             >
+              {/* Background image */}
+              <img
+                src={pkg.image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Gradient overlay — featured gets accent tint */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: pkg.featured
+                    ? "linear-gradient(160deg, rgba(30,58,138,0.85) 0%, rgba(0,0,0,0.92) 100%)"
+                    : "linear-gradient(160deg, rgba(5,5,20,0.7) 0%, rgba(0,0,0,0.90) 100%)",
+                }}
+              />
+
+              {/* Featured border glow */}
               {pkg.featured && (
                 <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest"
-                  style={{ background: "var(--color-accent)", color: "#000" }}
-                >
-                  {locale === "ru" ? "Популярно" : locale === "en" ? "Popular" : "Popular"}
+                  className="absolute inset-0 rounded-3xl"
+                  style={{ boxShadow: "inset 0 0 0 1.5px rgba(212,255,55,0.35)" }}
+                />
+              )}
+
+              {/* Popular badge */}
+              {pkg.featured && (
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest"
+                    style={{ background: "var(--color-accent)", color: "#000" }}
+                  >
+                    {locale === "ru" ? "Популярно" : locale === "en" ? "Popular" : "Popular"}
+                  </span>
                 </div>
               )}
 
-              <div
-                className="mb-6 flex size-14 items-center justify-center rounded-2xl"
-                style={{
-                  background: pkg.featured ? "rgba(255,255,255,0.1)" : "var(--color-bg-elevated)",
-                  color: pkg.featured ? "#fff" : "var(--color-accent)",
-                }}
-              >
-                {pkg.icon}
-              </div>
-
-              <p
-                className="mb-1 text-xs uppercase tracking-widest"
-                style={{ color: pkg.featured ? "rgba(255,255,255,0.5)" : "var(--color-text-muted)" }}
-              >
-                {pkg.label[locale]}
-              </p>
-
-              <div className="mb-6 flex items-baseline gap-1">
-                <span className="text-xs" style={{ color: pkg.featured ? "rgba(255,255,255,0.5)" : "var(--color-text-muted)" }}>
-                  {locale === "ru" ? "от" : locale === "en" ? "from" : "de la"}
-                </span>
-                <span
-                  className="text-4xl font-black"
-                  style={{ color: pkg.featured ? "#fff" : "var(--color-text-primary)" }}
+              {/* Content */}
+              <div className="relative z-10 flex flex-1 flex-col p-8">
+                {/* Icon */}
+                <div
+                  className="mb-6 flex size-14 items-center justify-center rounded-2xl"
+                  style={{
+                    background: pkg.featured ? "rgba(212,255,55,0.15)" : "rgba(255,255,255,0.12)",
+                    color: pkg.featured ? "var(--color-accent)" : "#fff",
+                  }}
                 >
-                  {pkg.from}
-                </span>
-                <span className="text-xs" style={{ color: pkg.featured ? "rgba(255,255,255,0.5)" : "var(--color-text-muted)" }}>
-                  / {pkg.unit[locale]}
-                </span>
+                  {pkg.icon}
+                </div>
+
+                <p className="mb-1 text-xs uppercase tracking-widest text-white/50">
+                  {pkg.label[locale]}
+                </p>
+
+                <div className="mb-6 flex items-baseline gap-1">
+                  <span className="text-xs text-white/50">
+                    {locale === "ru" ? "от" : locale === "en" ? "from" : "de la"}
+                  </span>
+                  <span className="text-4xl font-black text-white">{pkg.from}</span>
+                  <span className="text-xs text-white/50">/ {pkg.unit[locale]}</span>
+                </div>
+
+                <ul className="mb-8 flex-1 space-y-3">
+                  {pkg.items[locale].map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm">
+                      <svg
+                        width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2.5" className="shrink-0"
+                        style={{ color: "var(--color-accent)" }}
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span className="text-white/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={`/${locale}/contact`}
+                  className="block rounded-full py-3 text-center text-sm font-semibold transition-all hover:opacity-90"
+                  style={
+                    pkg.featured
+                      ? { background: "var(--color-accent)", color: "#000" }
+                      : { background: "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }
+                  }
+                >
+                  {locale === "ru" ? "Запросить предложение" : locale === "en" ? "Get a quote" : "Solicită ofertă"}
+                </Link>
               </div>
-
-              <ul className="mb-8 flex-1 space-y-3">
-                {pkg.items[locale].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      style={{ color: pkg.featured ? "var(--color-accent)" : "var(--color-accent)", flexShrink: 0 }}
-                    >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <span style={{ color: pkg.featured ? "rgba(255,255,255,0.8)" : "var(--color-text-muted)" }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href={`/${locale}/contact`}
-                className="block rounded-full py-3 text-center text-sm font-semibold transition-all"
-                style={
-                  pkg.featured
-                    ? { background: "var(--color-accent)", color: "#000" }
-                    : {
-                        border: "1px solid var(--color-border)",
-                        color: "var(--color-text-primary)",
-                      }
-                }
-              >
-                {locale === "ru" ? "Запросить предложение" : locale === "en" ? "Get a quote" : "Solicită ofertă"}
-              </Link>
             </div>
           ))}
         </div>
