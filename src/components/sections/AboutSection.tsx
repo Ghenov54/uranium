@@ -189,7 +189,7 @@ export function AboutSection() {
 
                 <div
                   className="flex flex-col gap-1 rounded-2xl p-5"
-                  style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)" }}
+                  style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
                 >
                   <span className="text-3xl font-black" style={{ color: "var(--color-text-primary)" }}>
                     {t("supportLabel")}
@@ -201,7 +201,7 @@ export function AboutSection() {
 
                 <div
                   className="flex flex-col gap-1 rounded-2xl p-5"
-                  style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)" }}
+                  style={{ background: "var(--color-bg-surface)", border: "1px solid var(--color-border)", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
                 >
                   <span className="text-3xl font-black" style={{ color: "var(--color-text-primary)" }}>
                     {t("countriesLabel")}

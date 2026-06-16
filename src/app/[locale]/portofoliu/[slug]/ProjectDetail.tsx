@@ -108,26 +108,27 @@ export function ProjectDetail({ project, related }: Props) {
       {/* Content */}
       <div className="section-container max-w-4xl py-16">
 
-        {/* Back link */}
-        <Link
-          href={`/${locale}/portofoliu`}
-          className="mb-8 inline-flex items-center gap-2 text-sm transition-colors hover:text-[var(--color-accent)]"
-          style={{ color: "var(--color-text-muted)" }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Înapoi la portofoliu
-        </Link>
+        {/* Back link + category badge — stacked on mobile */}
+        <div className="mb-8 flex flex-col gap-4">
+          <Link
+            href={`/${locale}/portofoliu`}
+            className="inline-flex items-center gap-2 text-sm transition-colors hover:text-[var(--color-accent)]"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Înapoi la portofoliu
+          </Link>
 
-        {/* Category badge */}
-        <span
-          className="mb-4 inline-block rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest"
-          style={{ background: "var(--color-accent)", color: "#000" }}
-        >
-          {catLabel}
-        </span>
+          <span
+            className="inline-block self-start rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest"
+            style={{ background: "var(--color-accent)", color: "#000" }}
+          >
+            {catLabel}
+          </span>
+        </div>
 
         {/* Title */}
         <h1

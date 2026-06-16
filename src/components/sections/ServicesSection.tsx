@@ -97,8 +97,8 @@ export function ServicesSection({ items }: Props) {
                         <Link
                           href={`/${locale}/servicii/${slug}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="shrink-0 inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs font-semibold transition-all hover:bg-[var(--color-accent)] hover:text-black"
-                          style={{ borderColor: "var(--color-accent)", color: "var(--color-accent)" }}
+                          className="shrink-0 inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs font-semibold transition-all hover:bg-[var(--color-accent)] hover:text-black hover:border-[var(--color-accent)]"
+                          style={{ borderColor: "var(--color-heading-active)", color: "var(--color-heading-active)" }}
                         >
                           Descoperă serviciul →
                         </Link>
