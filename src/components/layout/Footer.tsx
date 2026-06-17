@@ -41,6 +41,30 @@ export function Footer({ siteData }: Props) {
       className="relative overflow-hidden pt-20 pb-0"
       style={{ background: "#020204", borderTop: "1px solid rgba(255,255,255,0.07)" }}
     >
+      {/* Aurora mesh gradient */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: [
+            "radial-gradient(ellipse 70% 50% at 20% 0%, rgba(180,245,0,0.07), transparent 60%)",
+            "radial-gradient(ellipse 60% 60% at 80% 30%, rgba(20,60,220,0.1), transparent 60%)",
+            "radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,0,0,0.8), transparent 70%)",
+          ].join(","),
+        }}
+        aria-hidden
+      />
+
+      {/* Film grain */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          opacity: 0.04,
+          mixBlendMode: "overlay",
+        }}
+        aria-hidden
+      />
+
       {/* Dot grid */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -50,16 +74,17 @@ export function Footer({ siteData }: Props) {
         }}
         aria-hidden
       />
-      {/* Top accent gradient line */}
+
+      {/* Top accent gradient line — bright center */}
       <div
         className="pointer-events-none absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, var(--color-accent), transparent)" }}
+        style={{ background: "linear-gradient(90deg, transparent 0%, var(--color-accent) 25%, rgba(255,255,255,0.55) 50%, var(--color-accent) 75%, transparent 100%)" }}
         aria-hidden
       />
-      {/* Glow */}
+      {/* Top glow bloom */}
       <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-48 w-[600px] blur-3xl"
-        style={{ background: "rgba(180,245,0,0.04)" }}
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-64 w-[800px] blur-3xl"
+        style={{ background: "rgba(180,245,0,0.06)" }}
         aria-hidden
       />
 
@@ -186,15 +211,22 @@ export function Footer({ siteData }: Props) {
 
       {/* Large URANIUM watermark at the very bottom */}
       <div
-        className="pointer-events-none select-none overflow-hidden leading-none"
+        className="pointer-events-none select-none overflow-hidden leading-none relative"
         aria-hidden
       >
+        {/* Glow behind text */}
+        <div
+          className="absolute left-1/2 bottom-0 -translate-x-1/2 w-full h-32 blur-3xl"
+          style={{ background: "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(180,245,0,0.08), transparent)" }}
+        />
         <p
-          className="text-center font-black uppercase tracking-tight"
+          className="text-center font-black uppercase"
           style={{
             fontSize: "clamp(4rem, 16vw, 14rem)",
+            letterSpacing: "-0.03em",
             color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.06)",
+            WebkitTextStroke: "1px rgba(180,245,0,0.15)",
+            textShadow: "0 0 80px rgba(180,245,0,0.06), 0 0 200px rgba(180,245,0,0.03)",
             marginBottom: "-0.15em",
           }}
         >

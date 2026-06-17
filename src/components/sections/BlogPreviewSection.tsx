@@ -26,36 +26,86 @@ export function BlogPreviewSection({ posts }: Props) {
   return (
     <section className="relative overflow-hidden py-28" style={{ background: "#020204" }}>
 
+      {/* Aurora mesh gradient */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: [
+            "radial-gradient(ellipse 85% 55% at 10% 10%, rgba(180,245,0,0.09), transparent 65%)",
+            "radial-gradient(ellipse 65% 75% at 90% 90%, rgba(20,60,220,0.14), transparent 65%)",
+            "radial-gradient(ellipse 55% 60% at 55% 55%, rgba(130,20,180,0.06), transparent 60%)",
+          ].join(","),
+        }}
+        aria-hidden
+      />
+
+      {/* Film grain / noise texture */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          opacity: 0.045,
+          mixBlendMode: "overlay",
+        }}
+        aria-hidden
+      />
+
       {/* Dot grid */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
           backgroundSize: "44px 44px",
         }}
         aria-hidden
       />
 
-      {/* Accent glow top-right */}
+      {/* Top accent line — bright center */}
       <div
-        className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full blur-3xl"
-        style={{ background: "rgba(180,245,0,0.06)" }}
+        className="pointer-events-none absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent 0%, var(--color-accent) 25%, rgba(255,255,255,0.6) 50%, var(--color-accent) 75%, transparent 100%)" }}
+        aria-hidden
+      />
+      {/* Top glow bloom */}
+      <div
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-56 w-[700px] blur-3xl"
+        style={{ background: "rgba(180,245,0,0.07)" }}
         aria-hidden
       />
 
-      {/* Accent glow bottom-left */}
+      {/* Bottom-left blue glow */}
       <div
-        className="pointer-events-none absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full blur-3xl"
-        style={{ background: "rgba(30,58,138,0.25)" }}
+        className="pointer-events-none absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full blur-3xl"
+        style={{ background: "rgba(20,60,220,0.12)" }}
         aria-hidden
       />
 
-      {/* Large watermark */}
+      {/* Horizontal center glow line */}
+      <div
+        className="pointer-events-none absolute left-0 right-0"
+        style={{
+          top: "48%",
+          height: "1px",
+          background: "linear-gradient(90deg, transparent 0%, rgba(180,245,0,0.1) 30%, rgba(180,245,0,0.18) 50%, rgba(180,245,0,0.1) 70%, transparent 100%)",
+        }}
+        aria-hidden
+      />
+
+      {/* BLOG watermark — large, green-tinted stroke, glow */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none overflow-hidden"
         aria-hidden
       >
-        <p className="text-[22vw] font-black uppercase leading-none tracking-tight text-white/[0.025]">
+        <p
+          className="font-black uppercase leading-none"
+          style={{
+            fontSize: "clamp(9rem, 40vw, 50rem)",
+            letterSpacing: "-0.04em",
+            color: "transparent",
+            WebkitTextStroke: "1px rgba(180,245,0,0.13)",
+            textShadow: "0 0 100px rgba(180,245,0,0.07), 0 0 250px rgba(180,245,0,0.04)",
+          }}
+        >
           BLOG
         </p>
       </div>
