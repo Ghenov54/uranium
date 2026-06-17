@@ -33,6 +33,14 @@ export function Navbar() {
 
   const closeMenu = () => setMobileOpen(false);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    closeMenu();
+    if (pathname === `/${locale}` || pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const links = [
     { href: `/${locale}/servicii`, label: t("services") },
     { href: `/${locale}/portofoliu`, label: t("portfolio") },
@@ -56,6 +64,7 @@ export function Navbar() {
           {/* Logo — white when transparent, theme color when scrolled */}
           <Link
             href={`/${locale}`}
+            onClick={handleLogoClick}
             className={cn(
               "text-xl font-black uppercase tracking-tight transition-colors duration-300",
               transparent ? "text-white" : "text-[var(--color-text-primary)]"
@@ -147,7 +156,7 @@ export function Navbar() {
             href={`/${locale}`}
             className="text-lg font-black uppercase"
             style={{ color: "var(--color-text-primary)" }}
-            onClick={closeMenu}
+            onClick={handleLogoClick}
           >
             URANIUM.
           </Link>
