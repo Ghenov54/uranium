@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import { chatData, type ChatCategory, type ChatQA } from "@/data/chatData";
 
 type Message = {
@@ -9,8 +10,6 @@ type Message = {
   from: "bot" | "user";
   text: string;
 };
-
-const ALLOWED_PATHS = ["/", "/contact"];
 
 function renderAnswer(text: string) {
   return text.split("\n").map((line, i) => {
@@ -38,7 +37,11 @@ export function ChatWidget() {
   const [hasUnread, setHasUnread] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const allowed = ALLOWED_PATHS.includes(pathname);
+  const allowed =
+    pathname === `/${locale}` ||
+    pathname === "/" ||
+    pathname === `/${locale}/contact` ||
+    pathname === "/contact";
 
   useEffect(() => {
     if (!isOpen && allowed) {
