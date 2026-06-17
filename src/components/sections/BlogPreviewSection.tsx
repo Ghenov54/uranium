@@ -1,3 +1,4 @@
+"use client";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
