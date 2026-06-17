@@ -71,8 +71,11 @@ export function AboutSection() {
 
                 {/* Accent glow */}
                 <div
-                  className="absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full blur-3xl opacity-20 float-slow"
-                  style={{ background: "var(--color-accent)" }}
+                  className="absolute -top-16 left-1/2 -translate-x-1/2 float-slow"
+                  style={{
+                    width: "340px", height: "340px",
+                    background: "radial-gradient(circle, rgba(180,245,0,0.28) 0%, rgba(180,245,0,0.1) 40%, transparent 70%)",
+                  }}
                 />
 
                 {/* Content */}

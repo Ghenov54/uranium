@@ -10,22 +10,24 @@ export function CTASection() {
       className="relative py-24 border-t overflow-hidden"
       style={{ borderColor: "var(--color-border)" }}
     >
-      {/* Decorative blob — top right */}
+      {/* Decorative glow — top right */}
       <div
-        className="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl"
+        className="pointer-events-none absolute"
         style={{
-          background: "var(--color-accent)",
-          opacity: 0.05,
+          top: "-64px", right: "-64px", width: "380px", height: "380px",
+          background: "radial-gradient(circle, rgba(180,245,0,0.14) 0%, rgba(180,245,0,0.05) 45%, transparent 70%)",
         }}
+        aria-hidden
       />
 
-      {/* Decorative blob — bottom left */}
+      {/* Decorative glow — bottom left */}
       <div
-        className="pointer-events-none absolute -bottom-16 -left-16 w-64 h-64 rounded-full blur-3xl"
+        className="pointer-events-none absolute"
         style={{
-          background: "var(--color-accent)",
-          opacity: 0.05,
+          bottom: "-64px", left: "-64px", width: "380px", height: "380px",
+          background: "radial-gradient(circle, rgba(180,245,0,0.14) 0%, rgba(180,245,0,0.05) 45%, transparent 70%)",
         }}
+        aria-hidden
       />
 
       <div className="section-container">

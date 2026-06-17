@@ -28,15 +28,21 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
 
       {/* Blue glow top-left */}
       <div
-        className="pointer-events-none absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full blur-3xl hero-anim-fade hero-d1"
-        style={{ background: "rgba(30, 58, 138, 0.35)" }}
+        className="pointer-events-none absolute hero-anim-fade hero-d1"
+        style={{
+          left: "-128px", top: "-128px", width: "700px", height: "700px",
+          background: "radial-gradient(circle, rgba(30,58,138,0.55) 0%, rgba(30,58,138,0.25) 35%, transparent 70%)",
+        }}
         aria-hidden
       />
 
       {/* Accent glow bottom-right */}
       <div
-        className="pointer-events-none absolute -bottom-16 -right-16 h-[400px] w-[400px] rounded-full blur-3xl hero-anim-fade hero-d2"
-        style={{ background: "rgba(180, 245, 0, 0.06)" }}
+        className="pointer-events-none absolute hero-anim-fade hero-d2"
+        style={{
+          right: "-64px", bottom: "-64px", width: "500px", height: "500px",
+          background: "radial-gradient(circle, rgba(180,245,0,0.18) 0%, rgba(180,245,0,0.07) 40%, transparent 70%)",
+        }}
         aria-hidden
       />
 
@@ -51,7 +57,14 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
         className="pointer-events-none absolute bottom-0 left-0 right-0 select-none overflow-hidden hero-anim-fade hero-d5"
         aria-hidden
       >
-        <p className="text-[18vw] font-black uppercase leading-none tracking-tight text-white/[0.03]">
+        <p
+          className="font-black uppercase leading-none tracking-tight"
+          style={{
+            fontSize: "18vw",
+            color: "transparent",
+            WebkitTextStroke: "1px rgba(255,255,255,0.07)",
+          }}
+        >
           URANIUM
         </p>
       </div>
