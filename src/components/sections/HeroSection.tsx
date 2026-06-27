@@ -74,33 +74,34 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
 
       {/* ── IRIDESCENT ORB ────────────────────────────────── */}
       <div
-        className="pointer-events-none absolute hero-anim-fade hero-d3"
+        className="pointer-events-none absolute"
         style={{
-          right: "-8%",
+          right: "2%",
           top: "50%",
           transform: "translateY(-50%)",
-          width: "clamp(300px, 52vw, 640px)",
-          height: "clamp(300px, 52vw, 640px)",
+          width: "clamp(300px, 50vw, 620px)",
+          height: "clamp(300px, 50vw, 620px)",
           animation: "heroOrbFloat 8s ease-in-out infinite",
           zIndex: 1,
         }}
         aria-hidden
       >
-        {/* Outer ambient haze */}
+        {/* Outer aura — radial gradients, not box-shadow (safe with overflow:hidden) */}
         <div
           style={{
             position: "absolute",
-            inset: "-15%",
+            inset: "-18%",
             borderRadius: "50%",
             background: [
-              "radial-gradient(ellipse 55% 55% at 35% 35%, rgba(70,80,255,0.07) 0%, transparent 65%)",
-              "radial-gradient(ellipse 50% 50% at 65% 65%, rgba(220,50,110,0.05) 0%, transparent 65%)",
+              "radial-gradient(ellipse 45% 75% at 12% 48%, rgba(60,90,255,0.18) 0%, transparent 70%)",
+              "radial-gradient(ellipse 42% 65% at 88% 54%, rgba(220,45,100,0.14) 0%, transparent 65%)",
+              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(80,40,180,0.08) 0%, transparent 70%)",
             ].join(","),
             animation: "heroOrbPulse 8s ease-in-out infinite",
           }}
         />
 
-        {/* Main orb body */}
+        {/* Main orb body — dark purple core, visible against #020204 */}
         <div
           style={{
             position: "relative",
@@ -108,69 +109,58 @@ export function HeroSection({ title, subtitle, cta, locale = "ro" }: Props) {
             height: "100%",
             animation: "heroOrbMorph 11s ease-in-out infinite",
             background: [
-              "radial-gradient(circle at 36% 30%, rgba(48,44,85,0.97) 0%, rgba(14,12,28,0.98) 30%, rgba(4,4,10,1) 65%, rgba(0,0,0,1) 100%)",
-            ].join(","),
+              "radial-gradient(circle at 38% 32%,",
+              "rgba(65,52,118,0.98) 0%,",
+              "rgba(28,22,62,0.99) 28%,",
+              "rgba(10,8,24,1) 58%,",
+              "rgba(2,2,6,1) 100%)",
+            ].join(" "),
             boxShadow: [
-              /* chromatic outer rim — blue top-left */
-              "-6px -6px 45px rgba(60,95,255,0.38)",
-              /* purple mid */
-              "0 0 55px rgba(110,50,230,0.18)",
-              /* red-magenta bottom-right */
-              "8px 8px 40px rgba(215,45,105,0.28)",
-              /* thin colored outline */
-              "0 0 0 1px rgba(90,65,255,0.22)",
-              /* inner depth */
-              "inset 0 0 90px rgba(0,0,8,0.92)",
-              "inset 28px -28px 70px rgba(75,45,200,0.22)",
-              "inset -20px 20px 55px rgba(200,45,80,0.14)",
+              /* inset only — safe with overflow:hidden */
+              "inset 0 0 100px rgba(0,0,6,0.96)",
+              "inset 30px -30px 70px rgba(65,38,210,0.28)",
+              "inset -22px 22px 60px rgba(210,38,85,0.2)",
+              "inset 0 0 40px rgba(50,20,140,0.35)",
             ].join(","),
           }}
         >
-          {/* Specular highlight — primary */}
-          <div
-            style={{
-              position: "absolute",
-              top: "9%",
-              left: "13%",
-              width: "32%",
-              height: "22%",
-              borderRadius: "50%",
-              background: "radial-gradient(ellipse, rgba(255,255,255,0.11) 0%, rgba(190,170,255,0.06) 50%, transparent 80%)",
-            }}
-          />
+          {/* Specular highlight — glass reflection */}
+          <div style={{
+            position: "absolute", top: "8%", left: "12%",
+            width: "32%", height: "22%", borderRadius: "50%",
+            background: "radial-gradient(ellipse, rgba(255,255,255,0.16) 0%, rgba(200,180,255,0.07) 55%, transparent 85%)",
+          }} />
 
-          {/* Specular highlight — secondary (blue tint) */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "18%",
-              right: "12%",
-              width: "18%",
-              height: "14%",
-              borderRadius: "50%",
-              background: "radial-gradient(ellipse, rgba(100,140,255,0.13) 0%, transparent 70%)",
-            }}
-          />
+          {/* Chromatic left rim — blue */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "inherit",
+            background: "radial-gradient(ellipse 22% 72% at 2% 50%, rgba(70,115,255,0.32) 0%, transparent 100%)",
+          }} />
 
-          {/* Inner chromatic rim arc — blue-left */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "inherit",
-              background: "radial-gradient(ellipse 30% 80% at 5% 50%, rgba(60,100,255,0.12) 0%, transparent 70%)",
-            }}
-          />
+          {/* Chromatic right rim — red/magenta */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "inherit",
+            background: "radial-gradient(ellipse 20% 62% at 98% 53%, rgba(235,48,100,0.26) 0%, transparent 100%)",
+          }} />
 
-          {/* Inner chromatic rim arc — red-right */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "inherit",
-              background: "radial-gradient(ellipse 30% 70% at 95% 55%, rgba(220,55,100,0.1) 0%, transparent 70%)",
-            }}
-          />
+          {/* Chromatic top rim — violet */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "inherit",
+            background: "radial-gradient(ellipse 70% 18% at 50% 1%, rgba(130,55,255,0.28) 0%, transparent 100%)",
+          }} />
+
+          {/* Chromatic bottom rim — deep blue */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "inherit",
+            background: "radial-gradient(ellipse 65% 16% at 48% 99%, rgba(40,80,220,0.2) 0%, transparent 100%)",
+          }} />
+
+          {/* Secondary specular — blue tint */}
+          <div style={{
+            position: "absolute", bottom: "16%", right: "11%",
+            width: "16%", height: "12%", borderRadius: "50%",
+            background: "radial-gradient(ellipse, rgba(100,145,255,0.16) 0%, transparent 75%)",
+          }} />
         </div>
       </div>
 
