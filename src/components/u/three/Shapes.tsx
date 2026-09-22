@@ -5,7 +5,19 @@ import { mountStage, easeOut, type Stage } from "./stage";
 
 export type ShapeVariant = "cubes" | "spheres" | "twist" | "discs" | "cards";
 
-type Built = { update: (t: number, s: Stage) => void };
+/** Everything the composition can ever occupy, motion included: centre and half-extents in world units. */
+type Bounds = { cx: number; cy: number; hw: number; hh: number; near: number };
+type Built = { bounds: Bounds; update: (t: number, s: Stage) => void };
+
+const MARGIN = 1.08;
+
+/** Pulls the camera back just far enough that the whole composition fits the canvas at its current aspect. */
+const frameCamera = ({ camera }: Stage, b: Bounds) => {
+  const tanV = Math.tan((camera.fov * Math.PI) / 360);
+  const dist = Math.max(b.hh / tanV, b.hw / (tanV * camera.aspect)) * MARGIN + b.near;
+  camera.position.set(b.cx, b.cy, dist);
+  camera.lookAt(b.cx, b.cy, 0);
+};
 
 /**
  * Stylised 3D still-lifes for the finance pages, in the spirit of Clay's crypto page:
@@ -24,12 +36,14 @@ export function Shapes({ variant, className = "u-scene" }: { variant: ShapeVaria
 
     mountStage(canvas, {
       fov: 30,
-      z: variant === "cubes" ? 12 : 9,
       setup: async (s) => {
         const { RoundedBoxGeometry } = await import("three/examples/jsm/geometries/RoundedBoxGeometry.js");
         built = BUILDERS[variant](s, RoundedBoxGeometry);
       },
-      frame: (t, s) => built.update(t, s),
+      frame: (t, s) => {
+        frameCamera(s, built.bounds);
+        built.update(t, s);
+      },
     }).then((d) => (cancelled ? d() : (dispose = d)));
 
     return () => {
@@ -83,6 +97,7 @@ const BUILDERS: Record<ShapeVariant, (s: Stage, R: RBG) => Built> = {
       return c;
     });
     return {
+      bounds: { cx: 0, cy: 0.1, hw: 4.2, hh: 2.6, near: 1 },
       update: (t, { pointer }) => {
         const intro = easeOut(t / 1.6);
         for (const c of cubes) {
@@ -122,6 +137,7 @@ const BUILDERS: Record<ShapeVariant, (s: Stage, R: RBG) => Built> = {
       return b;
     });
     return {
+      bounds: { cx: -0.5, cy: -0.1, hw: 3.3, hh: 2.4, near: 1 },
       update: (t, { pointer }) => {
         for (const b of balls) {
           const { x, y, z, i } = b.userData as { x: number; y: number; z: number; i: number };
@@ -140,6 +156,7 @@ const BUILDERS: Record<ShapeVariant, (s: Stage, R: RBG) => Built> = {
     const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.35, 0.46, 300, 48, 3, 2), mat);
     scene.add(knot);
     return {
+      bounds: { cx: 0, cy: 0, hw: 2.6, hh: 2.6, near: 1 },
       update: (t, { pointer }) => {
         const k = 0.75 + 0.25 * easeOut(t / 1.4);
         knot.scale.setScalar(k);
@@ -170,6 +187,7 @@ const BUILDERS: Record<ShapeVariant, (s: Stage, R: RBG) => Built> = {
     group.rotation.set(0.55, 0, -0.35);
     scene.add(group);
     return {
+      bounds: { cx: 0, cy: 0, hw: 2.7, hh: 2.7, near: 1.5 },
       update: (t, { pointer }) => {
         const open = 0.5 + 0.5 * Math.sin(t * 0.6 - Math.PI / 2);
         for (const d of discs) {
@@ -208,6 +226,7 @@ const BUILDERS: Record<ShapeVariant, (s: Stage, R: RBG) => Built> = {
       return g;
     });
     return {
+      bounds: { cx: 0, cy: 0, hw: 2.9, hh: 2.2, near: 1 },
       update: (t, { pointer }) => {
         for (const c of cards) {
           const { x, y, z, i } = c.userData as { x: number; y: number; z: number; i: number };

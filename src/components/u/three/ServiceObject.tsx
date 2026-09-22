@@ -7,6 +7,9 @@ import { mountStage } from "./stage";
  * A dark matte object for a service card, lit by a violet and a green light
  * so only its edges catch colour. Each service gets its own form.
  */
+/** Object body colour per card, a lighter step of that card's ground so the form reads against it. */
+const BODY = [0x3b3f4c, 0x5a3fd0, 0x1f6b4a, 0x3552c8, 0x8a3470];
+
 export function ServiceObject({ variant }: { variant: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -21,7 +24,7 @@ export function ServiceObject({ variant }: { variant: number }) {
       fov: 30,
       z: 6.5,
       setup: async ({ THREE, scene }) => {
-        const mat = new THREE.MeshPhysicalMaterial({ color: 0x3b3f4c, roughness: 0.5, metalness: 0.05, clearcoat: 0.3, clearcoatRoughness: 0.6 });
+        const mat = new THREE.MeshPhysicalMaterial({ color: BODY[variant % BODY.length], roughness: 0.5, metalness: 0.05, clearcoat: 0.3, clearcoatRoughness: 0.6 });
         const { RoundedBoxGeometry } = await import("three/examples/jsm/geometries/RoundedBoxGeometry.js");
         const group = new THREE.Group();
         switch (variant % 5) {

@@ -525,6 +525,12 @@
 .u-stack__orbit { transform-box: fill-box; transform-origin: center; animation: u-orbit 60s linear infinite; color: rgba(243, 243, 246, 0.9); stroke: rgba(243, 243, 246, 0.26); }
 @keyframes u-orbit { to { transform: rotate(360deg); } }
 .u-stack__card { position: relative; }
+/* Each service card gets its own ground: ink, violet, emerald, cobalt, plum. */
+.u-stack__slot:nth-child(5n + 2) .u-stack__card { --bg: #3b2394; background: radial-gradient(90% 90% at 78% 40%, #5b3ee0 0%, #3b2394 55%, #2a1873 100%); }
+.u-stack__slot:nth-child(5n + 3) .u-stack__card { --bg: #0f3b2c; background: radial-gradient(90% 90% at 78% 40%, #1b6a4b 0%, #0f3b2c 55%, #0a2a1f 100%); }
+.u-stack__slot:nth-child(5n + 4) .u-stack__card { --bg: #1b2b7a; background: radial-gradient(90% 90% at 78% 40%, #2f4bc4 0%, #1b2b7a 55%, #121d57 100%); }
+.u-stack__slot:nth-child(5n + 5) .u-stack__card { --bg: #4a1640; background: radial-gradient(90% 90% at 78% 40%, #7e2a6c 0%, #4a1640 55%, #340e2c 100%); }
+.u-stack__slot:nth-child(5n + 2) .u-stack__card, .u-stack__slot:nth-child(5n + 3) .u-stack__card, .u-stack__slot:nth-child(5n + 4) .u-stack__card, .u-stack__slot:nth-child(5n + 5) .u-stack__card { --fg-2: rgba(255, 255, 255, 0.78); --line-strong: rgba(255, 255, 255, 0.32); }
 
 @media (max-width: 900px) {
   .u-clients__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
