@@ -73,7 +73,8 @@ export default async function HomePage() {
   return (
     <>
       <Hero title={th("heroTitle")} />
-      <Reel items={reel} label={th("reel")} />
+      {/* Temporary showreel: Mixkit free-licence footage, to be replaced by our own. */}
+      <Reel items={reel} label={th("reel")} video="/reel/showreel.mp4" />
       <Intro text={th("statement")} linkLabel={th("statementLink")} href={`/${locale}/servicii`} services={svc} moreLabel={th("serviceMore")} />
       <Clients title={th("clientsTitle")} />
       <Work items={work} title={th("workTitle")} allLabel={th("workAll")} allHref={`/${locale}/portofoliu`} />

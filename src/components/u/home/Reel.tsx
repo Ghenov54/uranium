@@ -69,17 +69,30 @@ export function Reel({
             className="u-reel__media"
             style={reduce ? undefined : { scale }}
           >
-            {items.map((it, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={it.image}
-                src={it.image}
-                alt=""
-                data-on={i === index ? "" : undefined}
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
+            {video ? (
+              <video
+                src={video}
+                poster={items[0].image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden
               />
-            ))}
+            ) : (
+              items.map((it, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={it.image}
+                  src={it.image}
+                  alt=""
+                  data-on={i === index ? "" : undefined}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              ))
+            )}
           </motion.div>
           <div className="u-reel__shade" aria-hidden />
           <Link href={current.href} className="u-reel__caption">
