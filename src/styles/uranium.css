@@ -179,6 +179,7 @@
 .u-reel__sticky { position: sticky; top: 0; height: 100svh; overflow: clip; }
 .u-reel__frame { position: absolute; inset: 0; clip-path: inset(10% var(--gutter) 10% var(--gutter) round 16px); background: var(--bg-3); }
 .u-reel__media { position: absolute; inset: 0; }
+.u-reel__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .u-reel__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1200ms ease, transform 4200ms linear; }
 .u-reel__media img[data-on] { opacity: 1; transform: scale(1); }
 .u-reel__shade { position: absolute; inset: auto 0 0 0; height: 55%; background: linear-gradient(to top, rgba(15, 16, 22, 0.78) 0%, rgba(15, 16, 22, 0.5) 45%, rgba(15, 16, 22, 0) 100%); pointer-events: none; }
@@ -461,10 +462,7 @@
   .u-hero__grid { grid-template-columns: 1fr; min-height: 0; padding-top: 24px; }
   .u-hero__scene { min-height: 0; aspect-ratio: 1 / 0.9; margin: 0 calc(var(--gutter) * -1); order: -1; }
   .u-hero__scene .u-scene { left: 0; top: 0; width: 100%; height: 100%; }
-  .u-reel { height: auto; padding-inline: var(--gutter); }
-  .u-reel__sticky { position: relative; height: auto; overflow: visible; }
-  .u-reel__frame { position: relative; inset: auto; clip-path: none; aspect-ratio: 4 / 5; border-radius: var(--r-media); overflow: hidden; }
-  .u-reel__caption { left: 20px; right: 20px; bottom: 20px; grid-template-columns: 1fr; }
+  .u-reel { height: 150vh; }
   .u-intro-block__grid, .u-news__row, .u-project-body, .u-feature-post, .u-contact { grid-template-columns: 1fr; }
   .u-work__grid { grid-template-columns: 1fr; }
   .u-card[data-wide] { width: 100%; }

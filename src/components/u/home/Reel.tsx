@@ -1,32 +1,43 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 
-export type ReelItem = { title: string; category: string; image: string; href: string };
+export type ReelItem = {
+  title: string;
+  category: string;
+  image: string;
+  href: string;
+};
 
 const HOLD_MS = 3200;
 
 /**
  * Work montage in a rounded frame that opens to full bleed as you scroll.
- * Stands in for a showreel video until one exists; swap the <img> stack for a <video> then.
+ * Plays a muted, looping showreel when `video` is given; otherwise cycles project images.
  */
-export function Reel({ items, label }: { items: ReelItem[]; label: string }) {
+export function Reel({
+  items,
+  label,
+  video,
+}: {
+  items: ReelItem[];
+  label: string;
+  video?: string;
+}) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
-  // On phones the reel is a plain card in the flow: no pinning, no opening to full screen.
-  const [compact, setCompact] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 900px)");
-    const on = () => setCompact(mq.matches);
-    on();
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  const still = reduce || compact;
 
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
   // Inset in % of the frame: starts as a card inside the gutters, ends edge to edge.
   const inset = useTransform(scrollYProgress, [0.25, 0.75], [1, 0]);
   const clipPath = useTransform(inset, (v) => {
@@ -50,8 +61,14 @@ export function Reel({ items, label }: { items: ReelItem[]; label: string }) {
   return (
     <section ref={ref} className="u-reel" aria-label={label}>
       <div className="u-reel__sticky">
-        <motion.div className="u-reel__frame" style={still ? undefined : { clipPath }}>
-          <motion.div className="u-reel__media" style={still ? undefined : { scale }}>
+        <motion.div
+          className="u-reel__frame"
+          style={reduce ? undefined : { clipPath }}
+        >
+          <motion.div
+            className="u-reel__media"
+            style={reduce ? undefined : { scale }}
+          >
             {items.map((it, i) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img
