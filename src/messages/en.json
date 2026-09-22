@@ -360,5 +360,44 @@
     "includes": "What's included",
     "related": "Projects in this category",
     "all": "All services"
+  },
+  "journal": {
+    "title": "Journal",
+    "lead": "Ideas, guides and news from the digital world, by the Uranium team",
+    "all": "All posts",
+    "latest": "Latest",
+    "picks": "Editor's picks",
+    "picksLead": "Practical guides we recommend to every client",
+    "viewAll": "View all articles",
+    "prev": "Previous",
+    "next": "Next",
+    "min": "min read",
+    "empty": "No articles in this category yet.",
+    "cat": {
+      "web": {
+        "label": "Web & Design",
+        "lead": "Trends, techniques and tips for outstanding websites and interfaces"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "lead": "SEO, advertising and strategies that bring customers"
+      },
+      "tech": {
+        "label": "Technology",
+        "lead": "AI, automation, cloud and security explained plainly"
+      },
+      "business": {
+        "label": "Business",
+        "lead": "Digitalisation, startups and how modern teams work"
+      }
+    }
+  },
+  "work": {
+    "title": "Our projects",
+    "lead": "Websites, apps and brands built for our clients.",
+    "challenge": "The challenge",
+    "results": "Results",
+    "details": "Details",
+    "next": "Next project"
   }
 }

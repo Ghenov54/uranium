@@ -360,5 +360,44 @@
     "includes": "Ce include",
     "related": "Proiecte din această categorie",
     "all": "Toate serviciile"
+  },
+  "journal": {
+    "title": "Jurnal",
+    "lead": "Idei, ghiduri și noutăți din lumea digitală, de la echipa Uranium",
+    "all": "Toate",
+    "latest": "Cele mai noi",
+    "picks": "Selecția redacției",
+    "picksLead": "Ghiduri practice pe care le recomandăm tuturor clienților",
+    "viewAll": "Vezi toate articolele",
+    "prev": "Înapoi",
+    "next": "Înainte",
+    "min": "min de citit",
+    "empty": "Nu sunt încă articole în această categorie.",
+    "cat": {
+      "web": {
+        "label": "Web & Design",
+        "lead": "Tendințe, tehnici și sfaturi pentru site-uri și interfețe remarcabile"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "lead": "SEO, publicitate și strategii care aduc clienți"
+      },
+      "tech": {
+        "label": "Tehnologie",
+        "lead": "AI, automatizare, cloud și securitate explicate pe înțeles"
+      },
+      "business": {
+        "label": "Business",
+        "lead": "Digitalizare, startup-uri și modul în care lucrează echipele moderne"
+      }
+    }
+  },
+  "work": {
+    "title": "Proiectele noastre",
+    "lead": "Site-uri, aplicații și branduri construite pentru clienții noștri.",
+    "challenge": "Provocarea",
+    "results": "Rezultate",
+    "details": "Detalii",
+    "next": "Proiectul următor"
   }
 }
