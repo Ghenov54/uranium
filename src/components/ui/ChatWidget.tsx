@@ -119,12 +119,8 @@ export function ChatWidget() {
           style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
         >
           <div className="flex items-center gap-3">
-            <div
-              className="flex size-8 items-center justify-center rounded-full text-sm"
-              style={{ background: "var(--bg-3)", color: "var(--fg)" }}
-            >
-              U
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/uranium-icon-white.png" alt="" width={32} height={32} className="size-8 object-contain" />
             <div>
               <p className="text-sm font-bold text-white leading-none">{data.greetingName}</p>
             </div>

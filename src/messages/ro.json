@@ -7,7 +7,10 @@
     "pricing": "Prețuri",
     "contact": "Contact",
     "cta": "Începe un proiect",
-    "industries": "Industrii"
+    "industries": "Industrii",
+    "industriesAll": "Toate industriile",
+    "crypto": "Crypto & Web3",
+    "careers": "Cariere"
   },
   "hero": {
     "tagline": "EXTRAORDINARY",
@@ -402,55 +405,210 @@
     "next": "Proiectul următor"
   },
   "industries": {
-    "title": "Industriile pe care le transformăm",
-    "lead": "Construim produse digitale care ridică standardul în fiecare domeniu în care lucrăm.",
+    "title": "Finanțe, crypto și trading",
+    "lead": "Construim produse pentru bani: platforme crypto, terminale de trading, aplicații fintech și dashboard-uri care rămân clare când piața se mișcă repede.",
     "explore": "Vezi proiectul",
-    "more": "Mai multe industrii",
-    "moreLead": "Lucrăm și cu echipe din alte domenii, cu aceeași rigoare.",
+    "exploreCrypto": "Explorează Crypto & Web3",
+    "talk": "Hai să vorbim",
+    "more": "Mai multe din finanțe",
+    "moreLead": "Subdomenii în care putem construi de la zero sau reface ce există.",
     "soon": "proboi iminent",
     "confirmed": "PROBOI confirmat",
     "score": "scor",
+    "spread": "spread",
     "crypto": {
       "title": "Crypto & Web3",
       "lead": "Screenere, scannere și platforme care fac piața crypto lizibilă în timp real, de la date brute la semnale clare."
     },
-    "fintech": {
-      "title": "Fintech & Trading",
-      "lead": "Terminale de trading, dashboard-uri și automatizări pentru bani: rapide, precise și ușor de citit sub presiune."
+    "trading": {
+      "title": "Trading & arbitraj",
+      "lead": "Boți, scannere și terminale care urmăresc zeci de burse deodată, calculează spread-uri și reacționează în milisecunde."
     },
-    "security": {
-      "title": "Securitate & Smart Home",
-      "lead": "Site-uri și instrumente pentru firme de securitate: oferta clară, încredere și cereri de ofertă care ajung direct la echipă."
+    "payments": {
+      "title": "Fintech & plăți",
+      "lead": "Aplicații bancare, portofele și fluxuri de plată în care fiecare pas inspiră încredere: onboarding simplu, cifre clare, securitate vizibilă."
     },
-    "commerce": {
-      "title": "E-commerce",
-      "lead": "Magazine online gândite pentru produse tehnice: filtre precise, pagini de produs complete și comandă simplă."
+    "analytics": {
+      "title": "Analiză & dashboard-uri",
+      "lead": "Dashboard-uri care transformă mii de date pe secundă în decizii: grafice live, radar de volume, alerte și rapoarte."
+    },
+    "caps": {
+      "payments": [
+        "Aplicații bancare",
+        "Portofele digitale",
+        "Plăți & POS",
+        "Onboarding KYC"
+      ]
     },
     "rows": {
-      "startups": {
-        "name": "Startup-uri & MVP",
-        "what": "Produs minim viabil, landing page, branding și lansare"
+      "defi": {
+        "name": "DeFi & protocoale",
+        "what": "Interfețe pentru staking, swap și lending, explicate pentru oameni obișnuiți"
       },
-      "business": {
-        "name": "Business & automatizări",
-        "what": "CRM, ERP, integrări API și procese automatizate"
+      "exchanges": {
+        "name": "Exchange-uri",
+        "what": "Terminale de tranzacționare, cărți de ordine și onboarding pentru utilizatori noi"
       },
-      "realestate": {
-        "name": "Imobiliare",
-        "what": "Platforme de anunțuri, căutare pe hartă și CRM pentru agenți"
+      "neobanks": {
+        "name": "Neobănci",
+        "what": "Aplicații mobile, carduri virtuale și istoricul tranzacțiilor"
       },
-      "health": {
-        "name": "Sănătate",
-        "what": "Programări online, aplicații pentru pacienți și site-uri de clinici"
+      "wealth": {
+        "name": "Wealth & investiții",
+        "what": "Portofolii, rapoarte de randament și platforme pentru consultanți"
       },
-      "education": {
-        "name": "Educație",
-        "what": "Platforme de cursuri, certificări și aplicații pentru studenți"
+      "pos": {
+        "name": "Plăți & POS",
+        "what": "Checkout, terminale, integrări cu procesatori de plăți"
       },
-      "food": {
-        "name": "Food & delivery",
-        "what": "Aplicații de livrare, meniuri digitale și comenzi online"
+      "insurtech": {
+        "name": "Insurtech",
+        "what": "Calculatoare de polițe, fluxuri de daune și portaluri pentru clienți"
       }
     }
+  },
+  "crypto": {
+    "eyebrow": "Crypto & Web3",
+    "title": "Construim produse crypto în care oamenii chiar au încredere",
+    "lead": "Design, dezvoltare și branding pentru screenere, platforme de trading și proiecte Web3, gândite pentru utilizatori, nu doar pentru insideri.",
+    "cta": "Hai să vorbim",
+    "built": "Proiecte crypto construite de noi",
+    "needTitle": "Crypto are nevoie de mai multă claritate",
+    "needBody": "Piața e plină de interfețe făcute pentru cei care știu deja totul. Utilizatorii noi se pierd între grafice, termeni și butoane care nu spun ce fac.",
+    "needBody2": "La Uranium construim produse crypto care arată la fel de serios ca banii pe care îi gestionează: rapide, lizibile și ușor de folosit sub presiune.",
+    "fullTitle": "Un studio complet pentru Web3",
+    "fullBody": "De la screenere în timp real la landing page-uri și identitate vizuală, acoperim tot drumul: strategie, design, cod și lansare.",
+    "brandEyebrow": "Branding",
+    "brandTitle": "Ieși din camera de ecou crypto",
+    "brandBody": "Aceleași logo-uri futuriste, aceleași cuvinte la modă. Majoritatea proiectelor crypto arată la fel și se pierd în mulțime.",
+    "brandStrong": "Creăm branduri clare și umane, care se disting și vorbesc cu oamenii reali.",
+    "webEyebrow": "Web design",
+    "webTitle": "Fă-ți viziunea clară pentru toată lumea",
+    "webBody": "Site-urile Web3 sunt adesea scrise pentru insideri. Noi facem site-uri care explică produsul simplu și transformă vizitatorii în utilizatori.",
+    "webStrong": "Landing page-uri care simplifică ideile complexe și inspiră încredere.",
+    "uxEyebrow": "UI/UX design",
+    "uxTitle": "Experiențe în care oamenii au încredere",
+    "uxBody": "Platformele crypto promit libertate, dar livrează confuzie: interfețe aglomerate și onboarding greu care alungă utilizatorii noi.",
+    "uxStrong": "Reimaginăm experiența ca să fie intuitivă, sigură și prietenoasă pentru oricine.",
+    "featured": "Proiect recomandat",
+    "caseStudy": "Vezi studiul de caz",
+    "prev": "Înapoi",
+    "next": "Înainte"
+  },
+  "careers": {
+    "eyebrow": "Cariere",
+    "title": "Construiește cu noi produse pe care oamenii le folosesc zilnic",
+    "lead": "Căutăm oameni curioși, care țin la detalii și vor să lucreze la proiecte de web, fintech și crypto, dintr-o echipă mică unde contează fiecare.",
+    "perksTitle": "De ce Uranium",
+    "perks": [
+      {
+        "t": "Proiecte reale, impact vizibil",
+        "d": "Lucrezi direct pe produse pentru clienți, nu pe task-uri izolate."
+      },
+      {
+        "t": "Remote sau hibrid",
+        "d": "Lucrezi din Chișinău sau de oriunde, cu program flexibil."
+      },
+      {
+        "t": "Învățare continuă",
+        "d": "Buget pentru cursuri, conferințe și cărți, plus review-uri de cod și design."
+      },
+      {
+        "t": "Echipă mică, decizii rapide",
+        "d": "Fără birocrație: ideile bune ajung în producție în aceeași săptămână."
+      }
+    ],
+    "openTitle": "Posturi deschise",
+    "apply": "Aplică",
+    "noFit": "Nu vezi rolul potrivit?",
+    "noFitBody": "Scrie-ne oricum. Dacă ești bun la ce faci, găsim un loc pentru tine.",
+    "write": "Trimite-ne CV-ul",
+    "requirements": "Ce căutăm",
+    "jobs": [
+      {
+        "id": "frontend",
+        "title": "Senior Frontend Developer",
+        "team": "Dezvoltare",
+        "type": "Full-time",
+        "place": "Remote / Chișinău",
+        "about": "Construiești interfețe rapide în Next.js și React pentru clienți din fintech și crypto, cu animații și 3D acolo unde contează.",
+        "reqs": [
+          "4+ ani cu React și TypeScript",
+          "Experiență cu Next.js (App Router)",
+          "Atenție la performanță și accesibilitate",
+          "Bonus: three.js, Framer Motion"
+        ]
+      },
+      {
+        "id": "uiux",
+        "title": "UI/UX Designer",
+        "team": "Design",
+        "type": "Full-time",
+        "place": "Remote / Chișinău",
+        "about": "Transformi produse financiare complexe în interfețe clare, de la cercetare și wireframe-uri la design system.",
+        "reqs": [
+          "Portofoliu cu produse digitale reale",
+          "Figma la nivel avansat",
+          "Gândire de sistem și atenție la detalii",
+          "Bonus: experiență în fintech sau crypto"
+        ]
+      },
+      {
+        "id": "motion",
+        "title": "Motion & 3D Designer",
+        "team": "Design",
+        "type": "Part-time / proiect",
+        "place": "Remote",
+        "about": "Creezi animațiile și obiectele 3D care fac site-urile noastre memorabile, de la concept la asset-uri gata de web.",
+        "reqs": [
+          "Blender sau Cinema 4D",
+          "After Effects sau Rive",
+          "Înțelegerea limitelor web (greutate, performanță)",
+          "Portofoliu de motion"
+        ]
+      },
+      {
+        "id": "web3",
+        "title": "Blockchain / Web3 Developer",
+        "team": "Dezvoltare",
+        "type": "Full-time",
+        "place": "Remote",
+        "about": "Integrezi burse, portofele și smart contracts în produsele clienților și construiești unelte de trading în timp real.",
+        "reqs": [
+          "Experiență cu API-uri de burse (ccxt, WebSocket)",
+          "Solidity sau Rust, un avantaj",
+          "Python sau Node.js în producție",
+          "Înțelegerea riscurilor de securitate"
+        ]
+      },
+      {
+        "id": "marketing",
+        "title": "Performance Marketing Specialist",
+        "team": "Marketing",
+        "type": "Full-time",
+        "place": "Chișinău / hibrid",
+        "about": "Planifici și optimizezi campanii Google și Meta pentru clienți, cu rapoarte pe care le înțelege oricine.",
+        "reqs": [
+          "2+ ani cu Google Ads și Meta Ads",
+          "Lucru cu GA4 și Tag Manager",
+          "Gândire analitică, orientare pe rezultat",
+          "Română și rusă, engleza un avantaj"
+        ]
+      },
+      {
+        "id": "pm",
+        "title": "Project Manager",
+        "team": "Operațiuni",
+        "type": "Full-time",
+        "place": "Chișinău / hibrid",
+        "about": "Ții legătura dintre clienți și echipă: planificare, termene, buget și comunicare clară la fiecare pas.",
+        "reqs": [
+          "2+ ani în management de proiecte digitale",
+          "Experiență cu Scrum sau Kanban",
+          "Comunicare excelentă în română, rusă și engleză",
+          "Organizare impecabilă"
+        ]
+      }
+    ]
   }
 }

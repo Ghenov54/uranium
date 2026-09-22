@@ -27,6 +27,16 @@ export const routing = defineRouting({
       en: "/industries",
       ru: "/otrasli",
     },
+    "/industrii/crypto": {
+      ro: "/industrii/crypto",
+      en: "/industries/crypto",
+      ru: "/otrasli/crypto",
+    },
+    "/cariere": {
+      ro: "/cariere",
+      en: "/careers",
+      ru: "/karera",
+    },
     "/blog": "/blog",
     "/contact": "/contact",
     "/preturi": {

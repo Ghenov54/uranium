@@ -7,7 +7,10 @@
     "pricing": "Pricing",
     "contact": "Contact",
     "cta": "Start a project",
-    "industries": "Industries"
+    "industries": "Industries",
+    "industriesAll": "All industries",
+    "crypto": "Crypto & Web3",
+    "careers": "Careers"
   },
   "hero": {
     "tagline": "EXTRAORDINARY",
@@ -402,55 +405,210 @@
     "next": "Next project"
   },
   "industries": {
-    "title": "Industries we redefine",
-    "lead": "We build digital products that raise the standard in every field we work in.",
+    "title": "Finance, crypto and trading",
+    "lead": "We build products for money: crypto platforms, trading terminals, fintech apps and dashboards that stay clear when the market moves fast.",
     "explore": "View project",
-    "more": "More industries",
-    "moreLead": "We also work with teams in other fields, with the same rigour.",
+    "exploreCrypto": "Explore Crypto & Web3",
+    "talk": "Let's talk",
+    "more": "More in finance",
+    "moreLead": "Areas where we can build from scratch or rebuild what exists.",
     "soon": "breakout soon",
     "confirmed": "BREAKOUT confirmed",
     "score": "score",
+    "spread": "spread",
     "crypto": {
       "title": "Crypto & Web3",
       "lead": "Screeners, scanners and platforms that make the crypto market readable in real time, from raw data to clear signals."
     },
-    "fintech": {
-      "title": "Fintech & Trading",
-      "lead": "Trading terminals, dashboards and money automation: fast, precise and easy to read under pressure."
+    "trading": {
+      "title": "Trading & arbitrage",
+      "lead": "Bots, scanners and terminals that watch dozens of exchanges at once, compute spreads and react in milliseconds."
     },
-    "security": {
-      "title": "Security & Smart Home",
-      "lead": "Websites and tools for security companies: a clear offer, trust, and quote requests that reach the team directly."
+    "payments": {
+      "title": "Fintech & payments",
+      "lead": "Banking apps, wallets and payment flows where every step builds trust: simple onboarding, clear numbers, visible security."
     },
-    "commerce": {
-      "title": "E-commerce",
-      "lead": "Online stores designed for technical products: precise filters, complete product pages and simple checkout."
+    "analytics": {
+      "title": "Analytics & dashboards",
+      "lead": "Dashboards that turn thousands of data points a second into decisions: live charts, volume radar, alerts and reports."
+    },
+    "caps": {
+      "payments": [
+        "Banking apps",
+        "Digital wallets",
+        "Payments & POS",
+        "KYC onboarding"
+      ]
     },
     "rows": {
-      "startups": {
-        "name": "Startups & MVP",
-        "what": "Minimum viable product, landing page, branding and launch"
+      "defi": {
+        "name": "DeFi & protocols",
+        "what": "Interfaces for staking, swaps and lending, explained for ordinary people"
       },
-      "business": {
-        "name": "Business & automation",
-        "what": "CRM, ERP, API integrations and automated processes"
+      "exchanges": {
+        "name": "Exchanges",
+        "what": "Trading terminals, order books and onboarding for new users"
       },
-      "realestate": {
-        "name": "Real estate",
-        "what": "Listing platforms, map search and CRM for agents"
+      "neobanks": {
+        "name": "Neobanks",
+        "what": "Mobile apps, virtual cards and transaction history"
       },
-      "health": {
-        "name": "Healthcare",
-        "what": "Online booking, patient apps and clinic websites"
+      "wealth": {
+        "name": "Wealth & investing",
+        "what": "Portfolios, performance reports and adviser platforms"
       },
-      "education": {
-        "name": "Education",
-        "what": "Course platforms, certification and student apps"
+      "pos": {
+        "name": "Payments & POS",
+        "what": "Checkout, terminals and payment processor integrations"
       },
-      "food": {
-        "name": "Food & delivery",
-        "what": "Delivery apps, digital menus and online ordering"
+      "insurtech": {
+        "name": "Insurtech",
+        "what": "Policy calculators, claims flows and customer portals"
       }
     }
+  },
+  "crypto": {
+    "eyebrow": "Crypto & Web3",
+    "title": "We build crypto products people actually trust",
+    "lead": "Design, development and branding for screeners, trading platforms and Web3 projects, built for users, not only insiders.",
+    "cta": "Let's talk",
+    "built": "Crypto products we built",
+    "needTitle": "Crypto needs more clarity",
+    "needBody": "The market is full of interfaces made for people who already know everything. New users get lost among charts, jargon and buttons that don't say what they do.",
+    "needBody2": "At Uranium we build crypto products that look as serious as the money they handle: fast, readable and easy to use under pressure.",
+    "fullTitle": "A full-service Web3 studio",
+    "fullBody": "From real-time screeners to landing pages and visual identity, we cover the whole path: strategy, design, code and launch.",
+    "brandEyebrow": "Branding",
+    "brandTitle": "Escape the crypto echo chamber",
+    "brandBody": "The same futuristic logos, the same buzzwords. Most crypto projects look alike and disappear in the crowd.",
+    "brandStrong": "We create clear, human brands that stand out and speak to real people.",
+    "webEyebrow": "Web design",
+    "webTitle": "Make your vision clear to everyone",
+    "webBody": "Web3 websites are often written for insiders. We build sites that explain the product simply and turn visitors into users.",
+    "webStrong": "Landing pages that simplify complex ideas and inspire trust.",
+    "uxEyebrow": "UI/UX design",
+    "uxTitle": "Experiences people trust",
+    "uxBody": "Crypto platforms promise freedom but deliver confusion: cluttered interfaces and hard onboarding that push new users away.",
+    "uxStrong": "We reimagine the experience to be intuitive, secure and friendly for anyone.",
+    "featured": "Featured project",
+    "caseStudy": "View case study",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "careers": {
+    "eyebrow": "Careers",
+    "title": "Build products people use every day, with us",
+    "lead": "We're looking for curious people who care about detail and want to work on web, fintech and crypto projects, in a small team where everyone counts.",
+    "perksTitle": "Why Uranium",
+    "perks": [
+      {
+        "t": "Real projects, visible impact",
+        "d": "You work directly on client products, not isolated tickets."
+      },
+      {
+        "t": "Remote or hybrid",
+        "d": "Work from Chișinău or anywhere, with flexible hours."
+      },
+      {
+        "t": "Always learning",
+        "d": "A budget for courses, conferences and books, plus code and design reviews."
+      },
+      {
+        "t": "Small team, fast decisions",
+        "d": "No bureaucracy: good ideas ship the same week."
+      }
+    ],
+    "openTitle": "Open positions",
+    "apply": "Apply",
+    "noFit": "Don't see the right role?",
+    "noFitBody": "Write to us anyway. If you're good at what you do, we'll find a place for you.",
+    "write": "Send us your CV",
+    "requirements": "What we look for",
+    "jobs": [
+      {
+        "id": "frontend",
+        "title": "Senior Frontend Developer",
+        "team": "Engineering",
+        "type": "Full-time",
+        "place": "Remote / Chișinău",
+        "about": "Build fast interfaces in Next.js and React for fintech and crypto clients, with motion and 3D where it matters.",
+        "reqs": [
+          "4+ years with React and TypeScript",
+          "Experience with Next.js (App Router)",
+          "Care for performance and accessibility",
+          "Bonus: three.js, Framer Motion"
+        ]
+      },
+      {
+        "id": "uiux",
+        "title": "UI/UX Designer",
+        "team": "Design",
+        "type": "Full-time",
+        "place": "Remote / Chișinău",
+        "about": "Turn complex financial products into clear interfaces, from research and wireframes to design systems.",
+        "reqs": [
+          "A portfolio of real digital products",
+          "Advanced Figma",
+          "Systems thinking and attention to detail",
+          "Bonus: fintech or crypto experience"
+        ]
+      },
+      {
+        "id": "motion",
+        "title": "Motion & 3D Designer",
+        "team": "Design",
+        "type": "Part-time / project",
+        "place": "Remote",
+        "about": "Create the motion and 3D objects that make our sites memorable, from concept to web-ready assets.",
+        "reqs": [
+          "Blender or Cinema 4D",
+          "After Effects or Rive",
+          "Understanding of web limits (weight, performance)",
+          "A motion portfolio"
+        ]
+      },
+      {
+        "id": "web3",
+        "title": "Blockchain / Web3 Developer",
+        "team": "Engineering",
+        "type": "Full-time",
+        "place": "Remote",
+        "about": "Integrate exchanges, wallets and smart contracts into client products and build real-time trading tools.",
+        "reqs": [
+          "Experience with exchange APIs (ccxt, WebSocket)",
+          "Solidity or Rust is a plus",
+          "Python or Node.js in production",
+          "Understanding of security risks"
+        ]
+      },
+      {
+        "id": "marketing",
+        "title": "Performance Marketing Specialist",
+        "team": "Marketing",
+        "type": "Full-time",
+        "place": "Chișinău / hybrid",
+        "about": "Plan and optimise Google and Meta campaigns for clients, with reports anyone can understand.",
+        "reqs": [
+          "2+ years with Google Ads and Meta Ads",
+          "GA4 and Tag Manager",
+          "Analytical, results-driven",
+          "Romanian and Russian, English a plus"
+        ]
+      },
+      {
+        "id": "pm",
+        "title": "Project Manager",
+        "team": "Operations",
+        "type": "Full-time",
+        "place": "Chișinău / hybrid",
+        "about": "Connect clients and the team: planning, deadlines, budget and clear communication at every step.",
+        "reqs": [
+          "2+ years managing digital projects",
+          "Scrum or Kanban experience",
+          "Excellent Romanian, Russian and English",
+          "Impeccable organisation"
+        ]
+      }
+    ]
   }
 }

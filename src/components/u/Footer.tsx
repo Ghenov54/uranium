@@ -5,6 +5,7 @@ import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site";
 import { realPhone } from "@/lib/sanity-helpers";
 import { BackToTop } from "./BackToTop";
 import { Ribbon } from "./three/Ribbon";
+import { Logo } from "./Logo";
 import { ArrowUpRight, SocialIcon } from "./icons";
 
 type Settings = {
@@ -39,6 +40,7 @@ export async function Footer() {
     { href: `/${locale}/despre`, label: t("about") },
     { href: `/${locale}/preturi`, label: t("pricing") },
     { href: `/${locale}/blog`, label: t("blog") },
+    { href: `/${locale}/cariere`, label: t("careers") },
     { href: `/${locale}/contact`, label: t("contact") },
   ];
 
@@ -108,6 +110,7 @@ export async function Footer() {
         </div>
 
         <div className="u-footer__bar">
+          <Logo height={28} />
           {social.length > 0 && (
             <ul className="u-footer__social">
               {social.map((s) => (

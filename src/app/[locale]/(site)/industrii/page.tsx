@@ -4,12 +4,13 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/u/Reveal";
 import { ArrowRight } from "@/components/u/icons";
 import { CandleStream } from "@/components/u/industries/CandleStream";
-import { ScreenScroll } from "@/components/u/industries/ScreenScroll";
 import { ScreenCycle } from "@/components/u/industries/ScreenCycle";
+import { SpreadFlow } from "@/components/u/industries/SpreadFlow";
+import { Shapes } from "@/components/u/three/Shapes";
 
-type Industry = { key: "crypto" | "fintech" | "security" | "commerce"; clients: string[]; href: string; media: ReactNode };
+type Industry = { key: "crypto" | "trading" | "payments" | "analytics"; tags: string[]; href: string; cta: string; media: ReactNode };
 
-/** Clay's industries page: each field gets its own block of real work, the screens always in motion. */
+/** Clay's industries page, narrowed to money: every block shows real finance work, the screens always in motion. */
 export default async function IndustriesPage() {
   const [locale, t] = await Promise.all([getLocale(), getTranslations("industries")]);
   const p = (slug: string) => `/${locale}/portofoliu/${slug}`;
@@ -18,14 +19,34 @@ export default async function IndustriesPage() {
   const industries: Industry[] = [
     {
       key: "crypto",
-      clients: ["ScalpScreener", "Nano Scalp", "Proboi Scanner"],
-      href: p("scalpscreener-trading-platform"),
+      tags: ["ScalpScreener", "Nano Scalp", "Proboi Scanner"],
+      href: `/${locale}/industrii/crypto`,
+      cta: t("exploreCrypto"),
       media: <CandleStream labels={{ soon: t("soon"), confirmed: t("confirmed"), score: t("score") }} />,
     },
     {
-      key: "fintech",
-      clients: ["ScalpScreener", "Proboi Scanner"],
+      key: "trading",
+      tags: ["Arbitrage Pro", "Proboi Scanner"],
       href: p("proboi-breakout-scanner"),
+      cta: t("explore"),
+      media: <SpreadFlow label={t("spread")} />,
+    },
+    {
+      key: "payments",
+      tags: t.raw("caps.payments") as string[],
+      href: `/${locale}/contact`,
+      cta: t("talk"),
+      media: (
+        <div className="u-ind__stage">
+          <Shapes variant="cards" />
+        </div>
+      ),
+    },
+    {
+      key: "analytics",
+      tags: ["ScalpScreener", "Nano Scalp"],
+      href: p("scalpscreener-trading-platform"),
+      cta: t("explore"),
       media: (
         <ScreenCycle
           url="scalpscreener.app"
@@ -33,36 +54,14 @@ export default async function IndustriesPage() {
             { src: img("scalp-dash.jpg"), alt: "ScalpScreener dashboard", cursor: [80, 12] },
             { src: img("scalp-grid.jpg"), alt: "ScalpScreener chart grid", cursor: [42, 30] },
             { src: img("scalp-radar.jpg"), alt: "ScalpScreener volume radar", cursor: [86, 40] },
-            { src: img("proboi.jpg"), alt: "Proboi Scanner", cursor: [12, 22] },
-          ]}
-        />
-      ),
-    },
-    {
-      key: "security",
-      clients: ["Watt Security", "Watt Security Shop"],
-      href: p("watt-security-website"),
-      media: <ScreenScroll src={img("watt-full.jpg")} url="watt-security.md" alt="Watt Security" />,
-    },
-    {
-      key: "commerce",
-      clients: ["Watt Security Shop", "Nano Scalp"],
-      href: p("watt-security-online-store"),
-      media: (
-        <ScreenCycle
-          url="shop.watt-security.md"
-          hold={3800}
-          frames={[
-            { src: img("shop-home.jpg"), alt: "Watt Security Shop home", cursor: [14, 22] },
-            { src: img("shop-catalog.jpg"), alt: "Watt Security Shop catalogue", cursor: [34, 58] },
-            { src: img("shop-product.jpg"), alt: "Watt Security Shop product", cursor: [74, 44] },
+            { src: img("scalp-draw.jpg"), alt: "ScalpScreener drawing tools", cursor: [24, 54] },
           ]}
         />
       ),
     },
   ];
 
-  const rows = ["startups", "business", "realestate", "health", "education", "food"] as const;
+  const rows = ["defi", "exchanges", "neobanks", "wealth", "pos", "insurtech"] as const;
   const title = t("title");
 
   return (
@@ -86,12 +85,12 @@ export default async function IndustriesPage() {
                 <h2>{t(`${ind.key}.title`)}</h2>
                 <p>{t(`${ind.key}.lead`)}</p>
                 <ul className="u-ind__clients">
-                  {ind.clients.map((c) => (
+                  {ind.tags.map((c) => (
                     <li key={c}>{c}</li>
                   ))}
                 </ul>
                 <Link href={ind.href} className="u-arrow-link">
-                  {t("explore")}
+                  {ind.cta}
                   <ArrowRight />
                 </Link>
               </Reveal>

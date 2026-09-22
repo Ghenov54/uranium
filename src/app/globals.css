@@ -3,6 +3,7 @@
 @import "../styles/uranium.css";
 @import "../styles/pages.css";
 @import "../styles/industries.css";
+@import "../styles/finance.css";
 
 * {
   box-sizing: border-box;
