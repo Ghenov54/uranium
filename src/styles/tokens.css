@@ -1,50 +1,69 @@
+/* ─────────────────────────────────────────────────────────────
+   Uranium design tokens. Clay-led world: a soft lavender-grey
+   ground, near-black type, black pill actions, and deep ink
+   panels (.u-dark) for moments of weight. Colour lives in the
+   3D objects (violet and uranium green) and in project imagery.
+   ───────────────────────────────────────────────────────────── */
+
 :root {
-  /* Colors — Dark mode (default) */
-  --color-bg: #000000;
-  --color-bg-surface: #111827;
-  --color-accent: #d4ff37;
-  --color-text-primary: #ffffff;
-  --color-text-muted: rgba(255, 255, 255, 0.6);
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-card-from: #1e3a8a;
-  --color-card-to: #000000;
+  --bg: #f0eff3;
+  --bg-2: #ffffff;
+  --bg-3: #e5e4ea;
+  --fg: #0f1016;
+  --fg-2: rgba(15, 16, 22, 0.66);
+  --fg-3: rgba(15, 16, 22, 0.45);
+  --line: rgba(15, 16, 22, 0.1);
+  --line-strong: rgba(15, 16, 22, 0.2);
+  --accent: #0f1016;
+  --accent-hover: #2a2c36;
+  --on-accent: #ffffff;
+  --scrim: 15, 16, 22;
 
-  /* Service row active/hover states */
-  --color-heading-active: #d4ff37;
-  --color-tag-active-bg: rgba(212, 255, 55, 0.1);
-  --color-tag-active-border: rgba(212, 255, 55, 0.4);
-  --color-tag-active-text: #d4ff37;
-  --color-row-hover: rgba(255, 255, 255, 0.05);
-  --color-row-active: rgba(212, 255, 55, 0.05);
+  --violet: #8a4dff;
+  --uranium: #62e05a;
 
-  /* Spacing */
-  --spacing-section: 96px;
-  --max-width: 1400px;
-  --padding-x: 32px;
+  --r-pill: 999px;
+  --r-media: 16px;
+  --r-panel: 28px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --gutter: clamp(20px, 4.4vw, 64px);
+  --max: 1600px;
+  --nav-h: 88px;
+
+  /* Legacy names still read by the chat widget; mapped onto the palette. */
+  --color-bg: var(--bg);
+  --color-bg-surface: var(--bg-2);
+  --color-accent: var(--fg);
+  --color-text-primary: var(--fg);
+  --color-text-muted: var(--fg-2);
+  --color-border: var(--line);
+  --max-width: var(--max);
+  --padding-x: var(--gutter);
 }
 
-[data-theme="light"] {
-  --color-bg: #ffffff;
-  --color-bg-surface: #f8f8f8;
-  --color-text-primary: #111827;
-  --color-text-muted: #6b7280;
-  --color-border: #e5e7eb;
-  --color-card-from: #1e3a8a;
-  --color-card-to: #2563eb;
-
-  /* Service row active/hover states — light mode */
-  --color-heading-active: #3d5e00;
-  --color-tag-active-bg: #111827;
-  --color-tag-active-border: #111827;
-  --color-tag-active-text: #d4ff37;
-  --color-row-hover: rgba(0, 0, 0, 0.03);
-  --color-row-active: rgba(212, 255, 55, 0.1);
+/* Deep ink panels: same component classes, inverted tokens. */
+.u-dark {
+  --bg: #181a21;
+  --bg-2: #20232c;
+  --bg-3: #2a2d38;
+  --fg: #f3f3f6;
+  --fg-2: rgba(243, 243, 246, 0.68);
+  --fg-3: rgba(243, 243, 246, 0.46);
+  --line: rgba(243, 243, 246, 0.12);
+  --line-strong: rgba(243, 243, 246, 0.24);
+  --accent: #f3f3f6;
+  --accent-hover: #ffffff;
+  --on-accent: #0f1016;
+  --scrim: 24, 26, 33;
+  background: var(--bg);
+  color: var(--fg);
 }
 
-/* Tailwind v4: @theme exposes these as utility classes (bg-accent, font-inter, max-w-container).
-   No tailwind.config.ts needed — v4 uses CSS-based configuration. */
 @theme {
-  --color-accent: #d4ff37;
-  --font-family-inter: var(--font-inter), sans-serif;
-  --max-width-container: 1400px;
+  --color-accent: #0f1016;
+  --max-width-container: 1600px;
 }

@@ -34,7 +34,6 @@ export function ChatWidget() {
   const [step, setStep] = useState<"categories" | "questions" | "answer">("categories");
   const [activeCategory, setActiveCategory] = useState<ChatCategory | null>(null);
   const [isTyping, setIsTyping] = useState(false);
-  const [hasUnread, setHasUnread] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const allowed =
@@ -43,12 +42,6 @@ export function ChatWidget() {
     pathname === `/${locale}/contact` ||
     pathname === "/contact";
 
-  useEffect(() => {
-    if (!isOpen && allowed) {
-      const t = setTimeout(() => setHasUnread(true), 4000);
-      return () => clearTimeout(t);
-    }
-  }, [isOpen, allowed]);
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
@@ -64,7 +57,6 @@ export function ChatWidget() {
 
   function openWidget() {
     setIsOpen(true);
-    setHasUnread(false);
   }
 
   function closeWidget() {
@@ -107,7 +99,7 @@ export function ChatWidget() {
     <>
       {/* Chat panel */}
       <div
-        className="fixed z-[80] flex flex-col overflow-hidden transition-all duration-300"
+        className="u-dark fixed z-[80] flex flex-col overflow-hidden transition-all duration-300"
         style={{
           bottom: "88px",
           right: "20px",
@@ -116,9 +108,9 @@ export function ChatWidget() {
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? "auto" : "none",
           borderRadius: "20px",
-          background: "#0d0d10",
+          background: "var(--bg-2)",
           border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(180,245,0,0.06)",
+          boxShadow: "0 24px 64px rgba(15,16,22,0.28)",
         }}
       >
         {/* Header */}
@@ -129,16 +121,12 @@ export function ChatWidget() {
           <div className="flex items-center gap-3">
             <div
               className="flex size-8 items-center justify-center rounded-full text-sm"
-              style={{ background: "var(--color-accent)", color: "#000" }}
+              style={{ background: "var(--bg-3)", color: "var(--fg)" }}
             >
               U
             </div>
             <div>
               <p className="text-sm font-bold text-white leading-none">{data.greetingName}</p>
-              <div className="mt-0.5 flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full" style={{ background: "#4ade80" }} />
-                <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.4)" }}>Online</span>
-              </div>
             </div>
           </div>
           <button
@@ -163,7 +151,7 @@ export function ChatWidget() {
                 className="max-w-[85%] rounded-2xl px-4 py-3 text-sm"
                 style={
                   msg.from === "user"
-                    ? { background: "var(--color-accent)", color: "#000", borderBottomRightRadius: "6px" }
+                    ? { background: "var(--accent)", color: "var(--on-accent)", borderBottomRightRadius: "6px" }
                     : { background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.85)", borderBottomLeftRadius: "6px" }
                 }
               >
@@ -211,8 +199,8 @@ export function ChatWidget() {
                       border: "1px solid rgba(255,255,255,0.08)",
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.background = "rgba(180,245,0,0.12)";
-                      e.currentTarget.style.borderColor = "rgba(180,245,0,0.3)";
+                      e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.24)";
                       e.currentTarget.style.color = "white";
                     }}
                     onMouseOut={(e) => {
@@ -235,7 +223,7 @@ export function ChatWidget() {
                 onClick={reset}
                 className="mb-2.5 text-xs transition-colors"
                 style={{ color: "rgba(255,255,255,0.35)" }}
-                onMouseOver={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                onMouseOver={(e) => (e.currentTarget.style.color = "var(--fg)")}
                 onMouseOut={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
               >
                 {data.backLabel}
@@ -252,9 +240,9 @@ export function ChatWidget() {
                       border: "1px solid rgba(255,255,255,0.07)",
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.background = "rgba(180,245,0,0.1)";
+                      e.currentTarget.style.background = "rgba(255,255,255,0.1)";
                       e.currentTarget.style.color = "white";
-                      e.currentTarget.style.borderColor = "rgba(180,245,0,0.25)";
+                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.background = "rgba(255,255,255,0.05)";
@@ -274,9 +262,9 @@ export function ChatWidget() {
               <button
                 onClick={askAnother}
                 className="w-full rounded-xl px-4 py-2.5 text-xs font-bold transition-all"
-                style={{ background: "rgba(180,245,0,0.12)", color: "var(--color-accent)", border: "1px solid rgba(180,245,0,0.2)" }}
-                onMouseOver={(e) => (e.currentTarget.style.background = "rgba(180,245,0,0.2)")}
-                onMouseOut={(e) => (e.currentTarget.style.background = "rgba(180,245,0,0.12)")}
+                style={{ background: "rgba(255,255,255,0.08)", color: "var(--fg)", border: "1px solid rgba(255,255,255,0.2)" }}
+                onMouseOver={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.14)")}
+                onMouseOut={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
               >
                 {data.moreQuestionsLabel} →
               </button>
@@ -295,21 +283,12 @@ export function ChatWidget() {
           width: "56px",
           height: "56px",
           borderRadius: "50%",
-          background: "var(--color-accent)",
-          color: "#000",
-          boxShadow: "0 8px 24px rgba(180,245,0,0.35), 0 2px 8px rgba(0,0,0,0.4)",
+          background: "var(--fg)",
+          color: "var(--bg-2)",
+          boxShadow: "0 8px 24px rgba(15,16,22,0.18)",
         }}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
-        {/* Unread dot */}
-        {hasUnread && !isOpen && (
-          <span
-            className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full text-[9px] font-bold text-white"
-            style={{ background: "#ef4444" }}
-          >
-            1
-          </span>
-        )}
 
         {/* Icon: chat when closed, X when open */}
         <svg

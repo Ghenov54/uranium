@@ -1,58 +1,45 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
-
-/* ─── Hero load animations ─────────────────────────────────── */
-@keyframes heroSlideUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.hero-anim {
-  opacity: 0;
-  animation: heroSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.hero-anim-fade {
-  opacity: 0;
-  animation: heroFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.hero-d1 { animation-delay: 80ms; }
-.hero-d2 { animation-delay: 220ms; }
-.hero-d3 { animation-delay: 380ms; }
-.hero-d4 { animation-delay: 560ms; }
-.hero-d5 { animation-delay: 800ms; }
-
-/* ─── Pulse glow on accent elements ───────────────────────── */
-@keyframes accentPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 255, 55, 0); }
-  50%       { box-shadow: 0 0 28px 4px rgba(212, 255, 55, 0.18); }
-}
-.accent-pulse { animation: accentPulse 3s ease-in-out infinite; }
-
-/* ─── Floating vertical drift ──────────────────────────────── */
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-.float-slow { animation: floatY 5s ease-in-out infinite; }
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
-  font-family: var(--font-inter), sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
-}
+@import "../styles/uranium.css";
 
 * {
   box-sizing: border-box;
 }
 
-.section-container {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: var(--padding-x);
+html {
+  background: var(--bg);
+  color-scheme: light;
+  scrollbar-color: var(--line-strong) var(--bg);
 }
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-onest), system-ui, sans-serif;
+  font-feature-settings: "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.section-container {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

@@ -22,9 +22,11 @@ export function Lightbox({ images, index, onClose, onPrev, onNext }: Props) {
   useEffect(() => {
     document.addEventListener("keydown", handleKey);
     document.body.style.overflow = "hidden";
+    window.__lenis?.stop();
     return () => {
       document.removeEventListener("keydown", handleKey);
       document.body.style.overflow = "";
+      window.__lenis?.start();
     };
   }, [handleKey]);
 
