@@ -521,6 +521,7 @@
 .u-quote__by span { font-size: 14px; color: var(--fg-2); }
 .u-quote__by .u-brand { font-size: 18px; color: rgba(15, 16, 22, 0.72); }
 
+.u-stack__dim { position: absolute; inset: 0; z-index: 2; background: #000; opacity: 0; pointer-events: none; }
 .u-stack__lines { position: absolute; inset: 0; width: 100%; height: 100%; color: rgba(243, 243, 246, 0.11); pointer-events: none; }
 .u-stack__orbit { transform-box: fill-box; transform-origin: center; animation: u-orbit 60s linear infinite; color: rgba(243, 243, 246, 0.9); stroke: rgba(243, 243, 246, 0.26); }
 @keyframes u-orbit { to { transform: rotate(360deg); } }

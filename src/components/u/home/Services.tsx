@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "../icons";
 import { ServiceObject } from "../three/ServiceObject";
 
@@ -36,11 +36,20 @@ function StackCard({ item, index, last, moreLabel }: { item: ServiceCard; index:
   // Runs while the next card travels over this one.
   const { scrollYProgress } = useScroll({ target: ref, offset: ["end end", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const filter = useTransform(scrollYProgress, [0, 1], ["brightness(1)", "brightness(0.55)"]);
+  // A black veil instead of filter: brightness(), same look without repainting the whole card each frame.
+  const dim = useTransform(scrollYProgress, [0, 1], [0, 0.45]);
+  // Once the next card fully covers this one, stop drawing its 3D object.
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const canvas = ref.current?.querySelector("canvas");
+    if (!canvas) return;
+    if (v > 0.97 && !last) canvas.dataset.paused = "";
+    else delete canvas.dataset.paused;
+  });
 
   return (
     <div ref={ref} className="u-stack__slot" style={{ "--i": index } as React.CSSProperties}>
-      <motion.article className="u-stack__card u-dark" style={reduce || last ? undefined : { scale, filter }}>
+      <motion.article className="u-stack__card u-dark" style={reduce || last ? undefined : { scale }}>
+        {!reduce && !last && <motion.span className="u-stack__dim" style={{ opacity: dim }} aria-hidden />}
         <CardLines />
         <div className="u-stack__body">
           <h3 className="u-stack__name">{item.name}</h3>

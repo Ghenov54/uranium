@@ -23,6 +23,7 @@ export function ServiceObject({ variant }: { variant: number }) {
     mountStage(canvas, {
       fov: 30,
       z: 6.5,
+      env: false,
       setup: async ({ THREE, scene }) => {
         const mat = new THREE.MeshPhysicalMaterial({ color: BODY[variant % BODY.length], roughness: 0.5, metalness: 0.05, clearcoat: 0.3, clearcoatRoughness: 0.6 });
         const { RoundedBoxGeometry } = await import("three/examples/jsm/geometries/RoundedBoxGeometry.js");
@@ -74,7 +75,6 @@ export function ServiceObject({ variant }: { variant: number }) {
         const key = new THREE.DirectionalLight(0xffffff, 0.9);
         key.position.set(-3, 4, 5);
         scene.add(key);
-        scene.environment = null;
       },
       frame: (t, { pointer }) => {
         obj.rotation.set(0.35 + Math.sin(t * 0.4) * 0.15 + pointer.y * 0.25, t * 0.25 + pointer.x * 0.4, 0.15);
