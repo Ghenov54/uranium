@@ -6,7 +6,8 @@
     "blog": "Blog",
     "pricing": "Pricing",
     "contact": "Contact",
-    "cta": "Start a project"
+    "cta": "Start a project",
+    "industries": "Industries"
   },
   "hero": {
     "tagline": "EXTRAORDINARY",
@@ -399,5 +400,57 @@
     "results": "Results",
     "details": "Details",
     "next": "Next project"
+  },
+  "industries": {
+    "title": "Industries we redefine",
+    "lead": "We build digital products that raise the standard in every field we work in.",
+    "explore": "View project",
+    "more": "More industries",
+    "moreLead": "We also work with teams in other fields, with the same rigour.",
+    "soon": "breakout soon",
+    "confirmed": "BREAKOUT confirmed",
+    "score": "score",
+    "crypto": {
+      "title": "Crypto & Web3",
+      "lead": "Screeners, scanners and platforms that make the crypto market readable in real time, from raw data to clear signals."
+    },
+    "fintech": {
+      "title": "Fintech & Trading",
+      "lead": "Trading terminals, dashboards and money automation: fast, precise and easy to read under pressure."
+    },
+    "security": {
+      "title": "Security & Smart Home",
+      "lead": "Websites and tools for security companies: a clear offer, trust, and quote requests that reach the team directly."
+    },
+    "commerce": {
+      "title": "E-commerce",
+      "lead": "Online stores designed for technical products: precise filters, complete product pages and simple checkout."
+    },
+    "rows": {
+      "startups": {
+        "name": "Startups & MVP",
+        "what": "Minimum viable product, landing page, branding and launch"
+      },
+      "business": {
+        "name": "Business & automation",
+        "what": "CRM, ERP, API integrations and automated processes"
+      },
+      "realestate": {
+        "name": "Real estate",
+        "what": "Listing platforms, map search and CRM for agents"
+      },
+      "health": {
+        "name": "Healthcare",
+        "what": "Online booking, patient apps and clinic websites"
+      },
+      "education": {
+        "name": "Education",
+        "what": "Course platforms, certification and student apps"
+      },
+      "food": {
+        "name": "Food & delivery",
+        "what": "Delivery apps, digital menus and online ordering"
+      }
+    }
   }
 }

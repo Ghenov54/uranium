@@ -2,6 +2,7 @@
 @import "../styles/tokens.css";
 @import "../styles/uranium.css";
 @import "../styles/pages.css";
+@import "../styles/industries.css";
 
 * {
   box-sizing: border-box;

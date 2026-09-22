@@ -35,6 +35,7 @@ export async function Footer() {
   const nav = [
     { href: `/${locale}/servicii`, label: t("services") },
     { href: `/${locale}/portofoliu`, label: t("portfolio") },
+    { href: `/${locale}/industrii`, label: t("industries") },
     { href: `/${locale}/despre`, label: t("about") },
     { href: `/${locale}/preturi`, label: t("pricing") },
     { href: `/${locale}/blog`, label: t("blog") },

@@ -22,6 +22,11 @@ export const routing = defineRouting({
       en: "/about",
       ru: "/o-nas",
     },
+    "/industrii": {
+      ro: "/industrii",
+      en: "/industries",
+      ru: "/otrasli",
+    },
     "/blog": "/blog",
     "/contact": "/contact",
     "/preturi": {

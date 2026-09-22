@@ -6,7 +6,8 @@
     "blog": "Blog",
     "pricing": "Prețuri",
     "contact": "Contact",
-    "cta": "Începe un proiect"
+    "cta": "Începe un proiect",
+    "industries": "Industrii"
   },
   "hero": {
     "tagline": "EXTRAORDINARY",
@@ -399,5 +400,57 @@
     "results": "Rezultate",
     "details": "Detalii",
     "next": "Proiectul următor"
+  },
+  "industries": {
+    "title": "Industriile pe care le transformăm",
+    "lead": "Construim produse digitale care ridică standardul în fiecare domeniu în care lucrăm.",
+    "explore": "Vezi proiectul",
+    "more": "Mai multe industrii",
+    "moreLead": "Lucrăm și cu echipe din alte domenii, cu aceeași rigoare.",
+    "soon": "proboi iminent",
+    "confirmed": "PROBOI confirmat",
+    "score": "scor",
+    "crypto": {
+      "title": "Crypto & Web3",
+      "lead": "Screenere, scannere și platforme care fac piața crypto lizibilă în timp real, de la date brute la semnale clare."
+    },
+    "fintech": {
+      "title": "Fintech & Trading",
+      "lead": "Terminale de trading, dashboard-uri și automatizări pentru bani: rapide, precise și ușor de citit sub presiune."
+    },
+    "security": {
+      "title": "Securitate & Smart Home",
+      "lead": "Site-uri și instrumente pentru firme de securitate: oferta clară, încredere și cereri de ofertă care ajung direct la echipă."
+    },
+    "commerce": {
+      "title": "E-commerce",
+      "lead": "Magazine online gândite pentru produse tehnice: filtre precise, pagini de produs complete și comandă simplă."
+    },
+    "rows": {
+      "startups": {
+        "name": "Startup-uri & MVP",
+        "what": "Produs minim viabil, landing page, branding și lansare"
+      },
+      "business": {
+        "name": "Business & automatizări",
+        "what": "CRM, ERP, integrări API și procese automatizate"
+      },
+      "realestate": {
+        "name": "Imobiliare",
+        "what": "Platforme de anunțuri, căutare pe hartă și CRM pentru agenți"
+      },
+      "health": {
+        "name": "Sănătate",
+        "what": "Programări online, aplicații pentru pacienți și site-uri de clinici"
+      },
+      "education": {
+        "name": "Educație",
+        "what": "Platforme de cursuri, certificări și aplicații pentru studenți"
+      },
+      "food": {
+        "name": "Food & delivery",
+        "what": "Aplicații de livrare, meniuri digitale și comenzi online"
+      }
+    }
   }
 }
